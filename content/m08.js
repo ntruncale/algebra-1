@@ -1,0 +1,175 @@
+module.exports = {
+  num: 8, unit: 2, slug: "m08-multi-step-equations", minutes: 40, calculator: "not needed",
+  title: "Multi-Step Equations",
+  subtitle: "Distributing, combining, variables on both sides, and special cases",
+  lede: "Real equations can be messy: parentheses, extra terms, x on both sides. This week you'll learn a plan that handles all of them.",
+  recap: "Two-step equations: undo adding or subtracting first, then multiplying or dividing. Write word problems as start + rate × variable = total.",
+  goals: [
+    "Solve equations that need distributing and combining like terms first",
+    "Solve equations with the variable on both sides",
+    "Recognize equations with no solution or infinitely many solutions"
+  ],
+  context: {
+    title: "Two lines that changed math",
+    place: "London · 1557",
+    text: `For most of history, there was no equal sign. Writers ended their calculations with words like *aequales* (Latin for "equal") or *est egale à*, over and over.
+
+In **1557**, a Welsh doctor and mathematician named **Robert Recorde** got tired of it. In his algebra book *The Whetstone of Witte*, he wrote (in the spelling of the time):
+
+> "to avoide the tediouse repetition of these woordes: is equalle to: I will sette as I doe often in woorke use, a paire of paralleles … bicause noe .2. thynges, can be moare equalle."
+
+His equal sign was much longer than ours, ════, but the idea stuck: **two parallel lines, because no two things are more equal**. Within about a century, mathematicians across Europe were using it.
+
+Recorde's sign makes this week's equations possible to write on one line, even when there's an x on **both** sides of the "paire of paralleles."`,
+    ask: "Recorde invented a symbol to save time. What symbols or abbreviations do you use to save time when you text or take notes?"
+  },
+  learn: [
+    {
+      title: "Clean up each side first",
+      text: `Before you start undoing, **simplify each side** of the equation separately:
+1. **Distribute** to remove parentheses.
+2. **Combine like terms** on each side.
+3. Then solve the two-step equation that's left.`,
+      worked: [
+        { problem: "{{2(x + 3) - 4 = 12}}", steps: [["{{2x + 6 - 4 = 12}}", "Distribute the 2."], ["{{2x + 2 = 12}}", "Combine 6 − 4."], ["{{2x = 10}}", "Subtract 2."], ["{{x = 5}}", "Divide by 2."]], check: "{{2(5 + 3) - 4 = 16 - 4 = 12}} ✓", eq: "2(x + 3) - 4 = 12", answer: "5" },
+        { problem: "{{5x - 3 + 2x = 25}}", steps: [["{{7x - 3 = 25}}", "Combine 5x + 2x."], ["{{7x = 28}}"], ["{{x = 4}}"]], eq: "5x - 3 + 2x = 25", answer: "4" }
+      ]
+    },
+    {
+      title: "Variables on both sides",
+      text: `When x shows up on both sides, **move all the x terms to one side** first. A good habit: subtract the **smaller** x term from both sides, so the coefficient that's left is positive. Then solve as usual.`,
+      worked: [
+        { problem: "{{5x - 3 = 2x + 9}}", steps: [["{{5x - 2x - 3 = 2x - 2x + 9}}", "Subtract 2x (the smaller x term) from both sides."], ["{{3x - 3 = 9}}"], ["{{3x = 12}}", "Add 3."], ["{{x = 4}}", "Divide by 3."]], check: "Left: {{5(4) - 3 = 17}}. Right: {{2(4) + 9 = 17}} ✓", eq: "5x - 3 = 2x + 9", answer: "4" },
+        { problem: "{{4(x - 1) = 6x + 8}}", steps: [["{{4x - 4 = 6x + 8}}", "Distribute."], ["{{-4 = 2x + 8}}", "Subtract 4x from both sides."], ["{{-12 = 2x}}", "Subtract 8."], ["{{x = -6}}", "Divide by 2."]], eq: "4(x - 1) = 6x + 8", answer: "-6" }
+      ]
+    },
+    {
+      title: "No solution, or every number",
+      text: `Sometimes the x terms **cancel out completely**. Then look at what's left:
+
+- A **false** statement, like {{3 = 5}}: there's **no solution**. No number works.
+- A **true** statement, like {{2 = 2}}: **every number** is a solution. We say **all real numbers** (or infinitely many solutions).`,
+      table: {
+        head: ["Equation", "Simplifies to", "Solutions"],
+        rows: [["{{2x + 3 = 2x + 5}}", "{{3 = 5}} (false)", "**no solution**"], ["{{2(x + 1) = 2x + 2}}", "{{2 = 2}} (true)", "**all real numbers**"], ["{{2x + 3 = x + 5}}", "{{x = 2}}", "**one solution**"]]
+      },
+      check: { q: "How many solutions does {{4x - 1 = 4x + 1}} have?", choices: [["none", true, "The 4x terms cancel, leaving −1 = 1, which is false."], ["one", false, "Subtract 4x from both sides and see what's left."], ["infinitely many", false, "What's left is −1 = 1. Is that true?"]], keepOrder: true }
+    }
+  ],
+  tasks: [
+    {
+      id: "t1", type: "solve", title: "Simplify, then solve", pick: 5,
+      items: [
+        { q: "{{3(x + 2) = 21}}", a: "5", pre: "x =", eq: "3(x + 2) = 21", how: ["Distribute: {{3x + 6 = 21}}", "{{3x = 15}}, **x = 5**"] },
+        { q: "{{4x + 2x - 7 = 11}}", a: "3", pre: "x =", eq: "4x + 2x - 7 = 11", how: ["Combine: {{6x - 7 = 11}}", "{{6x = 18}}, **x = 3**"] },
+        { q: "{{-2(y - 4) = 14}}", a: "-3", pre: "y =", eq: "-2(y - 4) = 14", how: ["Distribute: {{-2y + 8 = 14}}", "{{-2y = 6}}, **y = −3**"] },
+        { q: "{{5(n + 1) - 3n = 17}}", a: "6", pre: "n =", eq: "5(n + 1) - 3n = 17", how: ["{{5n + 5 - 3n = 17}}", "{{2n + 5 = 17}}, so {{2n = 12}}, **n = 6**"] },
+        { q: "{{12 = 2(3x - 3)}}", a: "3", pre: "x =", eq: "12 = 2(3x - 3)", how: ["{{12 = 6x - 6}}", "{{18 = 6x}}, **x = 3**"] },
+        { q: "{{x - (8 - x) = 10}}", a: "9", pre: "x =", eq: "x - (8 - x) = 10", how: ["{{x - 8 + x = 10}}", "{{2x - 8 = 10}}, **x = 9**"] },
+        { q: "{{7 + 3(2k - 1) = -14}}", a: "-3", pre: "k =", eq: "7 + 3(2k - 1) = -14", how: ["{{7 + 6k - 3 = -14}}", "{{6k + 4 = -14}}, so {{6k = -18}}, **k = −3**"] }
+      ],
+      hints: ["Distribute first. Then combine like terms on each side.", "Then it's a two-step equation."]
+    },
+    {
+      id: "t2", type: "solve", title: "Variables on both sides", pick: 5,
+      items: [
+        { q: "{{5x + 1 = 3x + 9}}", a: "4", pre: "x =", eq: "5x + 1 = 3x + 9", how: ["Subtract 3x: {{2x + 1 = 9}}", "{{2x = 8}}, **x = 4**"] },
+        { q: "{{7y - 4 = 2y + 16}}", a: "4", pre: "y =", eq: "7y - 4 = 2y + 16", how: ["Subtract 2y: {{5y - 4 = 16}}", "{{5y = 20}}, **y = 4**"] },
+        { q: "{{3n - 5 = 5n + 7}}", a: "-6", pre: "n =", eq: "3n - 5 = 5n + 7", how: ["Subtract 3n: {{-5 = 2n + 7}}", "{{-12 = 2n}}, **n = −6**"] },
+        { q: "{{8 - x = x + 2}}", a: "3", pre: "x =", eq: "8 - x = x + 2", how: ["Add x to both sides: {{8 = 2x + 2}}", "{{6 = 2x}}, **x = 3**"] },
+        { q: "{{2(a + 5) = 4a - 2}}", a: "6", pre: "a =", eq: "2(a + 5) = 4a - 2", how: ["{{2a + 10 = 4a - 2}}", "Subtract 2a: {{10 = 2a - 2}}, so {{12 = 2a}}, **a = 6**"] },
+        { q: "{{0.5x + 3 = 1.5x - 2}}", a: "5", pre: "x =", eq: "0.5x + 3 = 1.5x - 2", how: ["Subtract 0.5x: {{3 = x - 2}}", "**x = 5**"] },
+        { q: "{{-4(x - 2) = 2(x + 7)}}", a: "-1", pre: "x =", eq: "-4(x - 2) = 2(x + 7)", how: ["{{-4x + 8 = 2x + 14}}", "Add 4x: {{8 = 6x + 14}}, so {{-6 = 6x}}, **x = −1**"] }
+      ],
+      hints: ["Get the x terms on one side: subtract the smaller x term from both sides.", "Then get the numbers on the other side."]
+    },
+    {
+      id: "t3", type: "sort", title: "One, none, or all?",
+      intro: "Simplify each equation on paper. How many solutions does it have?",
+      cats: ["One solution", "No solution", "All real numbers"],
+      items: [
+        ["{{3x + 4 = 3x + 4}}", 2, "Both sides are identical."], ["{{3x + 4 = 3x - 4}}", 1, "4 = −4 is false."], ["{{3x + 4 = 2x + 4}}", 0, "x = 0. Zero is a solution!"],
+        ["{{2(x - 3) = 2x - 6}}", 2, "Distribute: 2x − 6 = 2x − 6."], ["{{5x - 5x = 7}}", 1, "0 = 7 is false."], ["{{x + 1 = -x + 1}}", 0, "2x = 0, so x = 0."],
+        ["{{4(x + 1) - x = 3x + 4}}", 2, "4x + 4 − x = 3x + 4, the same on both sides."], ["{{6x + 1 = 2(3x)}}", 1, "6x + 1 = 6x gives 1 = 0."]
+      ],
+      hints: ["If the x terms cancel: true statement → all real numbers; false → no solution.", "x = 0 is a real solution, not \"no solution.\""]
+    },
+    {
+      id: "t4", type: "mistake", title: "Where's the mistake?",
+      intro: "Tap the **first wrong line**, then give the correct solution.",
+      items: [
+        { q: "Solve {{3(x - 4) = 9}}", lines: ["{{3x - 4 = 9}}", "{{3x = 13}}", "{{x = 13/3}}"], bad: 0, why: "Distribute to **both** terms: {{3x - 12 = 9}}, so {{3x = 21}} and {{x = 7}}.", a: "7", pre: "x =", eq: "3(x - 4) = 9" },
+        { q: "Solve {{6x - 2 = 4x + 8}}", lines: ["{{10x - 2 = 8}}", "{{10x = 10}}", "{{x = 1}}"], bad: 0, why: "To move 4x, **subtract** it from both sides: {{2x - 2 = 8}}, so {{x = 5}}.", a: "5", pre: "x =", eq: "6x - 2 = 4x + 8" },
+        { q: "Solve {{5 - (x + 2) = 10}}", lines: ["{{5 - x + 2 = 10}}", "{{7 - x = 10}}", "{{x = -3}}"], bad: 0, why: "The minus sign applies to the 2 too: {{5 - x - 2 = 10}}, so {{3 - x = 10}} and {{x = -7}}.", a: "-7", pre: "x =", eq: "5 - (x + 2) = 10" },
+        { q: "Solve {{2x + 5 = 2x + 1}}", lines: ["{{5 = 1}}", "So {{x = 0}}."], bad: 1, why: "5 = 1 is false, so there is **no solution**. Nothing makes the equation true.", a: "no solution", eq: "2x + 5 = 2x + 1" }
+      ]
+    },
+    {
+      id: "t5", type: "steps", title: "The full plan",
+      intro: "Put the steps for solving {{3(x + 2) = x + 14}} in order.",
+      items: ["{{3x + 6 = x + 14}}", "{{2x + 6 = 14}}", "{{2x = 8}}", "{{x = 4}}", "Check: {{3(4 + 2) = 18}} and {{4 + 14 = 18}} ✓"],
+      hints: ["Distribute first. Then move the x terms to one side."]
+    },
+    {
+      id: "t6", type: "solve", title: "When are they equal?",
+      intro: "Set the two expressions equal to each other and solve.",
+      items: [
+        { q: "Plan A costs **$20** a month plus **$0.50** a gigabyte. Plan B costs **$35** plus **$0.25** a gigabyte. For how many gigabytes do they cost the same?", a: "60", post: "GB", eq: "20 + 0.5g = 35 + 0.25g", how: ["{{20 + 0.5g = 35 + 0.25g}}", "Subtract 0.25g: {{20 + 0.25g = 35}}", "{{0.25g = 15}}, so **60 GB**"] },
+        { q: "Ava has **$50** and saves **$8** a week. Ben has **$110** and spends **$4** a week. After how many weeks will they have the same amount?", a: "5", post: "weeks", eq: "50 + 8w = 110 - 4w", how: ["{{50 + 8w = 110 - 4w}}", "Add 4w: {{50 + 12w = 110}}", "{{12w = 60}}, so **5 weeks**"] },
+        { q: "A rectangle's length is {{2x + 3}} and its width is {{x + 7}}. For what value of {{x}} is it a **square**?", a: "4", pre: "x =", eq: "2x + 3 = x + 7", how: ["A square has equal sides: {{2x + 3 = x + 7}}", "**x = 4** (each side is 11)"] }
+      ],
+      hints: ["\"The same\" means the two expressions are equal."]
+    }
+  ],
+  build: {
+    heading: "Show the plan",
+    prompt: `Solve {{4(x - 2) + 3 = 2x + 7}}. Write **one step per line**, and next to each step write **what you did** (like *distribute*, *combine like terms*, *subtract 2x from both sides*). Finish with a **check**.`,
+    model: `4(x - 2) + 3 = 2x + 7
+4x - 8 + 3 = 2x + 7 (distribute)
+4x - 5 = 2x + 7 (combine like terms)
+2x - 5 = 7 (subtract 2x from both sides)
+2x = 12 (add 5 to both sides)
+x = 6 (divide both sides by 2)
+Check: 4(6 - 2) + 3 = 19 and 2(6) + 7 = 19.`,
+    placeholder: "4(x - 2) + 3 = 2x + 7\n…",
+    reqs: [
+      { t: "At least 5 lines", lines: 5 },
+      { t: "Get the right answer: x = 6", re: "x\\s*=\\s*6\\b" },
+      { t: "Name your moves (*distribute*, *combine*, *both sides*)", re: "\\b(distribut|combin|both sides)", min: 3 },
+      { t: "Check your answer (use the word *check*)", re: "\\bcheck" }
+    ]
+  },
+  reflect: {
+    q: "Recorde chose two parallel lines for \"equal\" because nothing could be more equal. Equations also have to stay balanced. Where in your own life do you have to balance two things (time, money, friends, school, sports)? How do you keep them balanced?",
+    placeholder: "I have to balance… I keep it balanced by…"
+  },
+  challenge: [
+    {
+      id: "x1", type: "solve", title: "Fractions and decimals",
+      intro: "Tip: to clear fractions, multiply **every term** on both sides by a common denominator.",
+      items: [
+        { q: "{{x/3 + x/4 = 14}}", a: "24", pre: "x =", eq: "x/3 + x/4 = 14", how: ["Multiply every term by 12: {{4x + 3x = 168}}", "{{7x = 168}}, **x = 24**"] },
+        { q: "{{0.2(x - 5) = 0.5x + 2}}", a: "-10", pre: "x =", eq: "0.2(x - 5) = 0.5x + 2", how: ["{{0.2x - 1 = 0.5x + 2}}", "{{-3 = 0.3x}}, **x = −10**"] },
+        { q: "{{(x + 1)/2 = (x - 3)/4}}", a: "-5", pre: "x =", eq: "(x + 1)/2 = (x - 3)/4", how: ["Multiply both sides by 4: {{2(x + 1) = x - 3}}", "{{2x + 2 = x - 3}}, **x = −5**"] },
+        { q: "{{3(2x - 1) - 2(x + 4) = 4(x - 2) + 1}}", a: "no solution", eq: "3(2x - 1) - 2(x + 4) = 4(x - 2) + 1", how: ["Left: {{6x - 3 - 2x - 8 = 4x - 11}}. Right: {{4x - 8 + 1 = 4x - 7}}.", "{{-11 = -7}} is false: **no solution**"] }
+      ]
+    },
+    {
+      id: "x2", type: "solve", title: "Make it work",
+      items: [
+        { q: "What number goes in the box so that {{3x + 5 = 3x + [box]}} has **infinitely many** solutions?", a: "5", how: ["Both sides must be identical: **5**"] },
+        { q: "For what value of {{a}} does {{ax + 2 = 4x + 7}} have **no solution**?", a: "4", pre: "a =", how: ["If a = 4, the x terms cancel and 2 = 7 is false.", "**a = 4**"] },
+        { q: "For what value of {{k}} is {{x = 3}} the solution of {{2x + k = 5x - 4}}?", a: "5", pre: "k =", eq: "2*3 + k = 5*3 - 4", how: ["Substitute x = 3: {{6 + k = 11}}", "**k = 5**"] }
+      ]
+    }
+  ],
+  culture: "**Did you know?** Recorde also introduced algebra to English readers, and the word *zenzizenzizenzike* (an eighth power) appears in *The Whetstone of Witte*. It's often called the longest word with the most z's in the English language.",
+  teacher: {
+    snags: [
+      ["Task 3", "Puts {{3x + 4 = 2x + 4}} under *No solution*", "x = 0 is a solution. Zero isn't \"nothing.\""],
+      ["Task 4, item 4", "Types *0*", "The expected answer is *no solution*; type it in words."],
+      ["Build", "Doesn't name the moves", "The requirement looks for *distribute*, *combine* and *both sides*."]
+    ],
+    factcheck: "Robert Recorde, *The Whetstone of Witte* (London, 1557): the quoted passage introduces \"a paire of paralleles, or Gemowe lines of one lengthe\" because \"noe .2. thynges, can be moare equalle.\" His sign was long (Cajori, *A History of Mathematical Notations*). *Zenzizenzizenzike* (the eighth power) appears in the same book and is listed in the *OED*."
+  }
+};

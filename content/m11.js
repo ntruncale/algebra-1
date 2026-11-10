@@ -1,0 +1,166 @@
+module.exports = {
+  num: 11, unit: 3, slug: "m11-inequalities", minutes: 35, calculator: "not needed",
+  title: "Inequalities",
+  subtitle: "Writing, graphing and solving inequalities, and the flip rule",
+  lede: "Not every question has one exact answer. \"How many tickets can I buy with $50?\" has a whole range of answers. Inequalities describe ranges.",
+  recap: "Solve proportions by cross-multiplying. For percents, part = percent × whole. Percent change = change ÷ original.",
+  goals: [
+    "Write inequalities from words like *at least* and *no more than*",
+    "Graph inequalities on a number line with open and closed circles",
+    "Solve inequalities, flipping the sign when you multiply or divide by a negative"
+  ],
+  context: {
+    title: "The man who drew the Moon first",
+    place: "London and Roanoke · 1585–1631",
+    text: `**Thomas Harriot** was an English scientist with an unusual life. In **1585** he sailed to **Roanoke Island** (in today's North Carolina) as the expedition's scientist, learned the Algonquian language, and wrote one of the first English books about North America.
+
+Back in England, he was one of the first people to point a telescope at the sky. On **July 26, 1609**, he made a drawing of the Moon, **four months before Galileo** made his famous drawings. He also discovered sunspots and studied how light bends.
+
+But Harriot almost never published. His algebra book, *Artis Analyticae Praxis*, came out in **1631**, ten years after his death. In it are two symbols he invented that you've used since elementary school: **<** (is less than) and **>** (is greater than).
+
+Equations say two things are *equal*. Harriot's symbols let mathematicians say one thing is *bigger*, which turns out to describe the real world much more often.`,
+    ask: "Think of three rules in your life that are really inequalities (for example, a height requirement for a ride)."
+  },
+  learn: [
+    {
+      title: "Writing and graphing inequalities",
+      text: `An **inequality** compares two expressions using one of four symbols:`,
+      table: {
+        head: ["Symbol", "Means", "Words that signal it", "Example"],
+        rows: [
+          ["{{<}}", "is less than", "less than, fewer than, below", "{{x < 5}}"],
+          ["{{>}}", "is greater than", "more than, greater than, above", "{{x > -2}}"],
+          ["{{<=}}", "is less than or equal to", "**at most**, **no more than**, maximum", "{{x <= 10}}"],
+          ["{{>=}}", "is greater than or equal to", "**at least**, **no less than**, minimum", "{{x >= 16}}"]
+        ]
+      },
+      after: `On a number line, use a **closed circle** ● when the number is included (≤ or ≥) and an **open circle** ○ when it isn't (< or >). Shade toward the numbers that work.
+
+{{x >= -2}}: %%nl:x>=-2%%
+
+{{x < 3}}: %%nl:x<3%%`,
+      check: { q: "You must be **at least 48 inches** tall to ride. Which inequality fits?", choices: [["{{h >= 48}}", true, "*At least* means 48 or more."], ["{{h > 48}}", false, "Exactly 48 inches is allowed, so use ≥."], ["{{h <= 48}}", false, "That would mean 48 inches or shorter."]] }
+    },
+    {
+      title: "Solving inequalities",
+      text: `Solve an inequality **just like an equation**: undo operations on both sides. The answer is a range, like {{x > 4}}, and it describes infinitely many solutions.`,
+      worked: [
+        { problem: "{{2x - 3 > 5}}", steps: [["{{2x > 8}}", "Add 3 to both sides."], ["{{x > 4}}", "Divide both sides by 2."]], check: "Test a number in the range, like 5: {{2(5) - 3 = 7}}, and 7 > 5 ✓", eq: "2x - 3 > 5", answer: "x > 4" }
+      ]
+    },
+    {
+      title: "The flip rule",
+      text: `There's one difference from equations. **When you multiply or divide both sides by a negative number, flip the inequality sign.**
+
+Why? Start with something true: {{-2 < 3}}. Multiply both sides by −1: {{2}} and {{-3}}. Now 2 is the bigger one, so the sign must flip: {{2 > -3}}. Multiplying by a negative reverses the order of numbers on the number line.`,
+      worked: [
+        { problem: "{{-3x + 4 <= 19}}", steps: [["{{-3x <= 15}}", "Subtract 4. No flip: subtracting doesn't flip."], ["{{x >= -5}}", "Divide by −3. **Flip** ≤ to ≥."]], check: "Test 0 (which is ≥ −5): {{-3(0) + 4 = 4}}, and 4 ≤ 19 ✓", eq: "-3x + 4 <= 19", answer: "x >= -5" }
+      ],
+      tip: "To double-check the direction, pick one number from your answer and one from outside it, and test both in the original inequality."
+    }
+  ],
+  tasks: [
+    {
+      id: "t1", type: "match", title: "Words to symbols", left: "Words", right: "Inequality",
+      pairs: [["You must be at least 16 to drive.", "{{a >= 16}}"], ["No more than 8 people in the elevator.", "{{p <= 8}}"], ["The temperature is below −5°.", "{{t < -5}}"], ["You need more than 70 points to pass.", "{{s > 70}}"], ["Spend at most $30.", "{{c <= 30}}"], ["The bridge needs a height of over 12 feet.", "{{h > 12}}"]],
+      hints: ["*At least* includes the number: ≥. *At most* and *no more than*: ≤.", "*Below* and *more than* don't include the number."]
+    },
+    {
+      id: "t2", type: "quiz", title: "Read the number line",
+      questions: [
+        { q: "Which graph shows {{x >= -2}}?", choices: [["%%nl:x>=-2%%", true], ["%%nl:x>-2%%", false, "An open circle means −2 is not included."], ["%%nl:x<=-2%%", false, "This shades the wrong way."]] },
+        { q: "Which inequality does this graph show? %%nl:x<4%%", choices: [["{{x < 4}}", true], ["{{x <= 4}}", false, "The circle is open, so 4 isn't included."], ["{{x > 4}}", false, "It's shaded to the left: numbers less than 4."]] },
+        { q: "Which inequality does this graph show? %%nl:x>=0%%", choices: [["{{x >= 0}}", true], ["{{x > 0}}", false, "The closed circle means 0 is included."], ["{{x <= 0}}", false]] },
+        { q: "Which number is **not** a solution of {{x > -3}}?", choices: [["{{-3}}", true, "−3 is not greater than −3."], ["{{-2}}", false], ["{{0}}", false], ["{{10}}", false]] }
+      ]
+    },
+    {
+      id: "t3", type: "solve", title: "Solve and simplify", pick: 6,
+      intro: "Type answers like **x > 4** or **x <= -2**. The math keys have ≤ and ≥, or type <= and >=.",
+      items: [
+        { q: "{{x + 5 > 9}}", a: "x > 4", eq: "x + 5 > 9", how: ["Subtract 5: **x > 4**"] },
+        { q: "{{y - 3 <= -7}}", a: "y <= -4", eq: "y - 3 <= -7", how: ["Add 3: **y ≤ −4**"] },
+        { q: "{{4x < 20}}", a: "x < 5", eq: "4x < 20", how: ["Divide by 4 (positive, no flip): **x < 5**"] },
+        { q: "{{-2x > 8}}", a: "x < -4", eq: "-2x > 8", how: ["Divide by −2 and **flip**: **x < −4**"] },
+        { q: "{{3x + 1 >= 13}}", a: "x >= 4", eq: "3x + 1 >= 13", how: ["Subtract 1: {{3x >= 12}}", "**x ≥ 4**"] },
+        { q: "{{x/(-5) <= 2}}", a: "x >= -10", eq: "x/(-5) <= 2", how: ["Multiply by −5 and **flip**: **x ≥ −10**"] },
+        { q: "{{7 - x > 2}}", a: "x < 5", eq: "7 - x > 2", how: ["Subtract 7: {{-x > -5}}", "Multiply by −1 and **flip**: **x < 5**"] },
+        { q: "{{-4n + 6 <= 18}}", a: "n >= -3", eq: "-4n + 6 <= 18", how: ["Subtract 6: {{-4n <= 12}}", "Divide by −4 and **flip**: **n ≥ −3**"] }
+      ],
+      hints: ["Solve like an equation.", "Did you multiply or divide by a negative? Then flip the sign."]
+    },
+    {
+      id: "t4", type: "sort", title: "Is −3 a solution?",
+      intro: "Substitute −3 for {{x}}. Does the inequality come out true?",
+      cats: ["Yes", "No"],
+      items: [
+        ["{{x < 0}}", 0], ["{{x >= -3}}", 0, "−3 ≥ −3 is true (equal counts)."], ["{{x > -3}}", 1, "−3 is not greater than itself."], ["{{2x + 1 < -4}}", 0, "2(−3) + 1 = −5, and −5 < −4."],
+        ["{{-x > 5}}", 1, "−(−3) = 3, and 3 is not greater than 5."], ["{{x^2 <= 9}}", 0, "(−3)² = 9, and 9 ≤ 9."], ["{{4 - x < 6}}", 1, "4 − (−3) = 7, and 7 is not less than 6."]
+      ],
+      hints: ["Replace x with (−3) and check whether the statement is true."]
+    },
+    {
+      id: "t5", type: "mistake", title: "Forgot to flip?",
+      intro: "Tap the **first wrong line**, then type the correct answer.",
+      items: [
+        { q: "Solve {{-5x < 15}}", lines: ["{{(-5x)/(-5) < 15/(-5)}}", "{{x < -3}}"], bad: 1, why: "Dividing by −5 means you must **flip** the sign: {{x > -3}}.", a: "x > -3", eq: "-5x < 15" },
+        { q: "Solve {{2x - 6 >= -10}}", lines: ["{{2x >= -4}}", "{{x <= -2}}"], bad: 1, why: "Dividing by **positive** 2 doesn't flip: {{x >= -2}}.", a: "x >= -2", eq: "2x - 6 >= -10" },
+        { q: "Solve {{10 - 2x > 4}}", lines: ["{{-2x > -6}}", "{{x > 3}}"], bad: 1, why: "Dividing by −2 flips the sign: {{x < 3}}.", a: "x < 3", eq: "10 - 2x > 4" }
+      ]
+    },
+    {
+      id: "t6", type: "solve", title: "Inequalities in real life",
+      intro: "Write and solve an inequality. Then answer the question.",
+      items: [
+        { q: "You have **$50**. Movie tickets cost **$12** each and you also need **$8** for parking. What's the **greatest** number of tickets you can buy? ({{12t + 8 <= 50}})", a: "3", post: "tickets", how: ["{{12t + 8 <= 50}}, so {{12t <= 42}}", "{{t <= 3.5}}. You can't buy half a ticket: **3**"] },
+        { q: "You need an average of **at least 80** on 3 tests. You got **74** and **85**. What's the **lowest** score you can get on the third? ({{(74 + 85 + s)/3 >= 80}})", a: "81", how: ["Multiply by 3: {{159 + s >= 240}}", "{{s >= 81}}: at least **81**"] },
+        { q: "An elevator holds **at most 1,200 pounds**. A worker weighing **200 lb** brings boxes of **40 lb** each. Write the inequality for the number of boxes {{b}} and solve it.", a: "b <= 25", eq: "200 + 40b <= 1200", how: ["{{200 + 40b <= 1200}}", "{{40b <= 1000}}, so **b ≤ 25**"] }
+      ],
+      hints: ["*At most* is ≤ and *at least* is ≥.", "If the answer must be a whole number, think about whether to round up or down."]
+    }
+  ],
+  build: {
+    heading: "An inequality from your life",
+    prompt: `Describe a real situation with a limit: a budget, a time limit, a minimum score, a weight limit. Write an **inequality** for it, **solve** it, and explain what the solution means. Mention whether the boundary number is **included**.`,
+    model: `I have 3 hours (180 minutes) after school. Practice takes 90 minutes, and each homework subject takes about 25 minutes. So 90 + 25s ≤ 180, which gives 25s ≤ 90 and s ≤ 3.6. That means I can finish at most 3 subjects. The boundary is included because ≤ means I can use exactly 180 minutes.`,
+    placeholder: "I have …",
+    reqs: [
+      { t: "An inequality (<, >, ≤ or ≥)", re: "[<>≤≥]" },
+      { t: "Solve it (show at least two inequality steps)", re: "[<>≤≥]", min: 2 },
+      { t: "Explain whether the boundary is *included*", re: "\\b(include|included|including|boundary|exactly)" },
+      { t: "At least 3 sentences", sentences: 3 }
+    ]
+  },
+  reflect: {
+    q: "Harriot made discoveries before Galileo but never shared them, so Galileo got the credit. Why do you think sharing your work matters, in science or in school? Is there something you're good at that you don't usually share?",
+    placeholder: "Sharing your work matters because…"
+  },
+  challenge: [
+    {
+      id: "x1", type: "solve", title: "Tougher inequalities",
+      items: [
+        { q: "{{5x - 2 > 3x + 8}}", a: "x > 5", eq: "5x - 2 > 3x + 8", how: ["Subtract 3x: {{2x - 2 > 8}}", "**x > 5**"] },
+        { q: "{{2(x - 4) <= 5x + 1}}", a: "x >= -3", eq: "2(x - 4) <= 5x + 1", how: ["{{2x - 8 <= 5x + 1}}", "{{-9 <= 3x}}, so **x ≥ −3**"] },
+        { q: "{{-x/3 + 2 >= 5}}", a: "x <= -9", eq: "-x/3 + 2 >= 5", how: ["{{-x/3 >= 3}}", "Multiply by −3 and flip: **x ≤ −9**"] },
+        { q: "{{1/2(6 - 4x) < x + 9}}", a: "x > -2", eq: "(1/2)(6 - 4x) < x + 9", how: ["{{3 - 2x < x + 9}}", "{{-6 < 3x}}, **x > −2**"] }
+      ]
+    },
+    {
+      id: "x2", type: "quiz", title: "Inequality reasoning",
+      questions: [
+        { q: "If {{a < b}}, which must be true?", choices: [["{{-a > -b}}", true, "Multiplying by −1 flips the order."], ["{{-a < -b}}", false], ["{{a^2 < b^2}}", false, "Try a = −5, b = 1: 25 is not less than 1."]] },
+        { q: "How many solutions does {{3x + 2 > 3x - 1}} have?", choices: [["every number works", true, "The x terms cancel: 2 > −1 is always true."], ["none", false], ["one", false]], keepOrder: true },
+        { q: "How many solutions does {{2(x + 1) < 2x}} have?", choices: [["none", true, "2x + 2 < 2x simplifies to 2 < 0, which is never true."], ["every number works", false], ["one", false]], keepOrder: true }
+      ]
+    }
+  ],
+  culture: "**Did you know?** Harriot's papers sat unread for almost 200 years. When historians finally studied them, they found he had discovered the law of refraction (how light bends) before Snell and Descartes, and had used binary numbers.",
+  teacher: {
+    snags: [
+      ["Task 3", "Types *4 < x* for x > 4", "Accepted: both say the same thing."],
+      ["Task 3", "Types *x ≥ 4* where *x > 4* is right", "Marked wrong with a note about whether the boundary is included."],
+      ["Task 6", "Types 3.5 tickets", "You can't buy half a ticket: round down for a maximum, up for a minimum."]
+    ],
+    factcheck: "Thomas Harriot (c. 1560–1621): Roanoke voyage 1585–86; *A Briefe and True Report of the New Found Land of Virginia* (1588); Moon drawing dated July 26, 1609 (Galileo's began in late November/December 1609); *Artis Analyticae Praxis* published posthumously in 1631 with the symbols < and >. His manuscripts on refraction and binary arithmetic were studied in the 19th–20th centuries."
+  }
+};

@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Algebra 1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@500..700&family=Source+Sans+3:wght@400..700&family=STIX+Two+Text:ital,wght@0,400..600;1,400..600&display=swap">
+<link rel="stylesheet" href="assets/course.css">
+<style>
+/* Layout: one column listing the units in order; each module is a row with its progress on this iPad. */
+.hero { display: grid; gap: 14px; }
+.brand { display: flex; align-items: center; gap: 16px; }
+.brand img { width: 76px; height: 76px; flex: none; background: #fff; border-radius: 50%; }
+.school { color: var(--accent); font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; font-size: 0.875rem; }
+.how { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; display: grid; gap: 8px; }
+.how ul { margin: 0; padding-left: 1.2rem; display: grid; gap: 4px; }
+.unit { display: grid; gap: 10px; }
+.unit h2 { font-size: 1.3rem; }
+.unit h2 .un { display: block; font-family: var(--font-body); font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
+.unit h2 .en { font-family: var(--font-body); font-weight: 500; font-size: 0.95rem; color: var(--muted); }
+.unit ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.unit li { display: grid; grid-template-columns: 3rem 1fr auto; grid-template-areas: "n t p" "n s p"; align-items: center; gap: 0 12px; padding: 10px 16px; border-radius: 10px; border: 1px solid var(--line); background: var(--surface); }
+.unit li .num { grid-area: n; font-size: 0.85rem; font-weight: 800; color: var(--accent); font-variant-numeric: tabular-nums; }
+.unit li a { grid-area: t; color: var(--ink); font-weight: 700; text-decoration: none; }
+.unit li a:hover { color: var(--accent); }
+.unit li .sub { grid-area: s; color: var(--muted); font-size: 0.85rem; }
+.unit li .prog { grid-area: p; font-size: 0.8rem; font-weight: 650; padding: 2px 10px; border-radius: 999px; white-space: nowrap; }
+.unit li .prog.started { color: var(--accent); background: var(--accent-soft); }
+.unit li .prog.done { color: var(--ok); background: var(--ok-soft); }
+.unit li .prog .st { color: var(--c2); margin-left: 4px; }
+</style>
+</head>
+<body>
+<main class="wrap">
+  <header class="hero">
+    <div class="brand">
+      <img src="assets/seal.png" alt="Scranton Preparatory School seal">
+      <div>
+        <p class="school">Scranton Preparatory School</p>
+        <h1>Algebra 1</h1>
+      </div>
+    </div>
+    <div class="tilestrip" aria-hidden="true"></div>
+    <p class="lede">Weekly practice for Algebra 1: 30 modules that follow along with your math class. Open the module your teacher assigned in Blackbaud, work through every step, then complete the Blackbaud check.</p>
+    <div class="how">
+      <h2 style="font-size:1.1rem">How it works</h2>
+      <ul>
+        <li>Every module has the same <b>7 steps</b>: Context, Learn, Practice, Build, Reflect, Check, Challenge.</li>
+        <li><b>Learn</b> has worked examples. Try each one on paper, then tap to see the steps.</li>
+        <li>Activities check themselves. <b>Pink</b> means try again. <b>Yellow</b> means your answer is equal but not finished (like a fraction that isn't reduced). Stuck? Tap <b>Show a hint</b>.</li>
+        <li>Type answers like <b>3x + 5</b>, <b>-2</b>, <b>3/4</b> or <b>x^2</b>. The math keys under each box have <b>² √ ≤ ≥</b> and more.</li>
+        <li>Finish every activity to get the <b>completion code</b> for the Blackbaud check. The <b>★ Challenge</b> at the end is optional, for when you're ready for more.</li>
+      </ul>
+    </div>
+  </header>
+  <section class="unit">
+    <h2><span class="un">Unit 1</span> Number Sense Bootcamp <span class="en">· Integers, fractions, order of operations, expressions, simplifying</span></h2>
+    <ol>
+      <li><span class="num">M1</span><a href="m01-integers.html">Positive and Negative Numbers</a><span class="sub">The number line, absolute value, and the four operations with integers</span><span class="prog" data-m="1" data-n="7" data-s="x1,x2,x3"></span></li>
+      <li><span class="num">M2</span><a href="m02-fractions-decimals.html">Fractions and Decimals</a><span class="sub">Simplifying, the four operations, and negative fractions</span><span class="prog" data-m="2" data-n="7" data-s="x1,x2"></span></li>
+      <li><span class="num">M3</span><a href="m03-order-of-operations.html">Exponents and the Order of Operations</a><span class="sub">Powers, PEMDAS done right, and grouping symbols</span><span class="prog" data-m="3" data-n="7" data-s="x1,x2"></span></li>
+      <li><span class="num">M4</span><a href="m04-variables-expressions.html">Variables and Expressions</a><span class="sub">The vocabulary of algebra, translating words into math, and evaluating</span><span class="prog" data-m="4" data-n="7" data-s="x1,x2"></span></li>
+      <li><span class="num">M5</span><a href="m05-simplifying.html">Simplifying Expressions</a><span class="sub">The distributive property and combining like terms</span><span class="prog" data-m="5" data-n="7" data-s="x1,x2"></span></li>
+    </ol>
+  </section>
+  <section class="unit">
+    <h2><span class="un">Unit 2</span> Solving Equations <span class="en">· One-step, two-step and multi-step equations, formulas, ratios and percents</span></h2>
+    <ol>
+      <li><span class="num">M6</span><a href="m06-one-step-equations.html">One-Step Equations</a><span class="sub">Solutions, inverse operations, and keeping the balance</span><span class="prog" data-m="6" data-n="7" data-s="x1,x2"></span></li>
+      <li><span class="num">M7</span><a href="m07-two-step-equations.html">Two-Step Equations</a><span class="sub">Undo in reverse order, and turn word problems into equations</span><span class="prog" data-m="7" data-n="7" data-s="x1,x2"></span></li>
+      <li><span class="num">M8</span><a href="m08-multi-step-equations.html">Multi-Step Equations</a><span class="sub">Distributing, combining, variables on both sides, and special cases</span><span class="prog" data-m="8" data-n="7" data-s="x1,x2"></span></li>
+      <li><span class="num">M9</span><a href="m09-formulas.html">Formulas and Literal Equations</a><span class="sub">Using formulas, and solving a formula for a different variable</span><span class="prog" data-m="9" data-n="7" data-s="x1,x2"></span></li>
+      <li><span class="num">M10</span><a href="m10-ratios-percents.html">Ratios, Proportions and Percents</a><span class="sub">Unit rates, solving proportions, percent problems and converting units</span><span class="prog" data-m="10" data-n="7" data-s="x1,x2"></span></li>
+    </ol>
+  </section>
+  <section class="unit">
+    <h2><span class="un">Unit 3</span> Inequalities and Functions <span class="en">· Inequalities, absolute value, the coordinate plane, functions, sequences</span></h2>
+    <ol>
+      <li><span class="num">M11</span><a href="m11-inequalities.html">Inequalities</a><span class="sub">Writing, graphing and solving inequalities, and the flip rule</span><span class="prog" data-m="11" data-n="7" data-s="x1,x2"></span></li>
+      <li><span class="num">M12</span><a href="m12-compound-absolute-value.html">Compound Inequalities and Absolute Value</a><span class="sub">"And" and "or" inequalities, absolute value equations, and tolerance</span><span class="prog" data-m="12" data-n="7" data-s="x1,x2"></span></li>
+      <li><span class="num">M13</span><a href="m13-coordinate-plane.html">The Coordinate Plane</a><span class="sub">Ordered pairs, quadrants, tables of values and graphing equations</span><span class="prog" data-m="13" data-n="7" data-s="x1,x2"></span></li>
+      <li><span class="num">M14</span><a href="m14-functions.html">Functions</a><span class="sub">Inputs and outputs, function notation, domain and range, and the vertical line test</span><span class="prog" data-m="14" data-n="7" data-s="x1,x2"></span></li>
+      <li><span class="num">M15</span><a href="m15-sequences.html">Patterns and Sequences</a><span class="sub">Arithmetic sequences, the common difference and a formula for the nth term</span><span class="prog" data-m="15" data-n="7" data-s="x1,x2"></span></li>
+    </ol>
+  </section>
+  <section class="unit">
+    <h2><span class="un">Unit 4</span> Linear Functions <span class="en">· Slope, slope-intercept form, writing equations, parallel and perpendicular lines, data</span></h2>
+    <ol>
+      <li><span class="num">M16</span><a href="m16-slope.html">Slope</a><span class="sub">Rise over run, slope from two points, and slope as a rate of change</span><span class="prog" data-m="16" data-n="7" data-s="x1,x2"></span></li>
+      <li><span class="num">M17</span><a href="m17-slope-intercept.html">Slope-Intercept Form</a><span class="sub">y = mx + b: reading it, graphing it and writing it from a graph</span><span class="prog" data-m="17" data-n="7" data-s="x1,x2"></span></li>
+      <li><span class="num">M18</span><a href="m18-writing-linear-equations.html">Writing Linear Equations</a><span class="sub">From a slope and a point, from two points, and from a real situation</span><span class="prog" data-m="18" data-n="7" data-s="x1,x2"></span></li>
+      <li><span class="num">M19</span><a href="m19-standard-form-parallel.html">Standard Form, Parallel and Perpendicular Lines</a><span class="sub">Ax + By = C, intercepts, horizontal and vertical lines, and slopes of parallel and perpendicular lines</span><span class="prog" data-m="19" data-n="7" data-s="x1,x2"></span></li>
+      <li><span class="num">M20</span><a href="m20-scatter-plots.html">Scatter Plots and Lines of Best Fit</a><span class="sub">Correlation, trend lines, predictions and the difference between correlation and causation</span><span class="prog" data-m="20" data-n="7" data-s="x1,x2"></span></li>
+    </ol>
+  </section>
+  <section class="unit">
+    <h2><span class="un">Unit 5</span> Systems and Exponents <span class="en">· Systems of equations, exponent rules, scientific notation, exponential growth</span></h2>
+    <ol>
+      <li><span class="num">M21</span><a href="m21-systems-graphing.html">Systems of Equations: Graphing</a><span class="sub">What a system is, solving by graphing, and when there's no solution or infinitely many</span><span class="prog" data-m="21" data-n="7" data-s="x1,x2"></span></li>
+      <li><span class="num">M22</span><a href="m22-substitution.html">Systems of Equations: Substitution</a><span class="sub">Solving a system exactly by replacing one variable with an expression</span><span class="prog" data-m="22" data-n="7" data-s="x1,x2"></span></li>
+      <li><span class="num">M23</span><a href="m23-elimination.html">Systems of Equations: Elimination</a><span class="sub">Adding equations to cancel a variable, multiplying first, and choosing a method</span><span class="prog" data-m="23" data-n="7" data-s="x1,x2"></span></li>
+      <li><span class="num">M24</span><a href="m24-exponent-rules.html">Exponent Rules and Scientific Notation</a><span class="sub">Product, quotient and power rules, zero and negative exponents, and very big and very small numbers</span><span class="prog" data-m="24" data-n="7" data-s="x1,x2"></span></li>
+      <li><span class="num">M25</span><a href="m25-exponential.html">Exponential Growth and Decay</a><span class="sub">Multiplying instead of adding: doubling, percent growth, depreciation and half-life</span><span class="prog" data-m="25" data-n="7" data-s="x1,x2"></span></li>
+    </ol>
+  </section>
+  <section class="unit">
+    <h2><span class="un">Unit 6</span> Polynomials and Quadratics <span class="en">· Polynomials, factoring, square roots, parabolas, solving quadratics</span></h2>
+    <ol>
+      <li><span class="num">M26</span><a href="m26-polynomials.html">Polynomials</a><span class="sub">Vocabulary, adding and subtracting, and multiplying (including binomials)</span><span class="prog" data-m="26" data-n="7" data-s="x1,x2"></span></li>
+      <li><span class="num">M27</span><a href="m27-factoring.html">Factoring</a><span class="sub">Greatest common factors, trinomials x² + bx + c, and the difference of squares</span><span class="prog" data-m="27" data-n="7" data-s="x1,x2"></span></li>
+      <li><span class="num">M28</span><a href="m28-square-roots.html">Square Roots and Radicals</a><span class="sub">Square roots, estimating, simplifying radicals, and the Pythagorean theorem</span><span class="prog" data-m="28" data-n="7" data-s="x1,x2"></span></li>
+      <li><span class="num">M29</span><a href="m29-parabolas.html">Quadratic Functions and Parabolas</a><span class="sub">Graphs of y = ax² + bx + c: direction, vertex, axis of symmetry, intercepts and real-world arcs</span><span class="prog" data-m="29" data-n="7" data-s="x1,x2"></span></li>
+      <li><span class="num">M30</span><a href="m30-solving-quadratics.html">Solving Quadratic Equations</a><span class="sub">Factoring and the zero product property, square roots, and the quadratic formula</span><span class="prog" data-m="30" data-n="7" data-s="x1,x2"></span></li>
+    </ol>
+  </section>
+  <aside class="helpbox"><b>Stuck?</b> 1) Look back at the worked example in Step 2. 2) Tap <b>Show a hint</b>. 3) Work it on paper, one step at a time. 4) Ask your teacher or come to math help. Being stuck is part of learning math, not a sign you can't do it.</aside>
+  <footer><span>Progress shown here is saved in this iPad's browser.</span></footer>
+</main>
+<script>
+// Show each module's progress from this iPad's saved work.
+document.querySelectorAll(".prog").forEach(function (p) {
+  var n = Number(p.getAttribute("data-n")), s = null, stars = (p.getAttribute("data-s") || "").split(",").filter(Boolean);
+  try { s = JSON.parse(localStorage.getItem("alg1:m" + p.getAttribute("data-m")) || "null"); } catch (e) {}
+  if (!s || !s.done) return;
+  var k = Object.keys(s.done).filter(function (id) { return s.done[id]; }).length;
+  var st = stars.length && stars.every(function (id) { return s.star && s.star[id]; });
+  if (!k && !st) return;
+  k = Math.min(k, n);
+  p.textContent = k >= n ? "Done ✓" : k + " of " + n;
+  p.className = "prog " + (k >= n ? "done" : "started");
+  if (st) { var b = document.createElement("span"); b.className = "st"; b.textContent = "★"; b.title = "Challenge solved"; p.appendChild(b); }
+});
+</script>
+</body>
+</html>

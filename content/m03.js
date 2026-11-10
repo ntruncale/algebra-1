@@ -1,0 +1,196 @@
+module.exports = {
+  num: 3, unit: 1, slug: "m03-order-of-operations", minutes: 35, calculator: "not needed",
+  title: "Exponents and the Order of Operations",
+  subtitle: "Powers, PEMDAS done right, and grouping symbols",
+  lede: "When an expression has several operations, everyone has to do them in the same order, or we'd all get different answers. This week: exponents, and the order that the whole world agrees on.",
+  recap: "To add or subtract fractions, use a common denominator. To multiply, go straight across. To divide, keep, change, flip. Integer sign rules still apply.",
+  goals: [
+    "Evaluate powers, including negative bases",
+    "Use the order of operations correctly, including left to right",
+    "Handle grouping symbols: parentheses, brackets, fraction bars and absolute value"
+  ],
+  context: {
+    title: "The math problem that broke the internet",
+    place: "Twitter · July 2019",
+    text: `In the summer of 2019, someone posted a simple-looking problem online:
+
+> 8 ÷ 2(2 + 2) = ?
+
+Within days, millions of people had argued about it. Half of them said **16**. The other half said **1**. Celebrities weighed in. News sites wrote articles. The mathematician **Steven Strogatz** explained it in *The New York Times*.
+
+Why the fight? Everyone agrees you start inside the parentheses: 2 + 2 = 4. That leaves **8 ÷ 2(4)**. Under the rule taught in most U.S. schools, multiplication and division have **equal rank**, so you go **left to right**: 8 ÷ 2 = 4, then 4 × 4 = **16**. But some people (and some calculators) treat the multiplication in 2(4) as glued together, and do it first: 8 ÷ 8 = **1**.
+
+The real lesson: a good mathematician writes problems so there's **only one way to read them**. You'll learn the standard order this week, and how to use grouping symbols so nobody has to argue.`,
+    ask: "Before you read on: what answer would you have given? Why?"
+  },
+  learn: [
+    {
+      title: "Exponents",
+      text: `An **exponent** tells how many times to multiply the **base** by itself: {{2^3 = 2 * 2 * 2 = 8}}. Read {{2^3}} as "2 to the third power" or "2 cubed." {{5^2}} is "5 squared."
+
+**Watch the negative sign.** The exponent only applies to what's right next to it:
+
+- {{(-3)^2 = (-3)(-3) = 9}}: the base is −3.
+- {{-3^2 = -(3 * 3) = -9}}: the base is 3, and the negative is applied after.
+
+A negative base to an **even** power is positive; to an **odd** power, negative: {{(-2)^3 = -8}}, {{(-2)^4 = 16}}.`,
+      table: {
+        head: ["{{n}}", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
+        rows: [["{{n^2}}", "1", "4", "9", "16", "25", "36", "49", "64", "81", "100", "121", "144"]],
+        caption: "Perfect squares are worth knowing by heart. They come back in Unit 6."
+      },
+      check: { q: "What is {{(-1)^6}}?", choices: [["{{1}}", true, "Six negatives multiplied is even, so positive."], ["{{-1}}", false, "Count the negatives: 6 is even."], ["{{-6}}", false, "An exponent means repeated multiplication, not multiplying by 6."]], keepOrder: true }
+    },
+    {
+      title: "The order of operations",
+      text: `Do the operations in this order:`,
+      table: {
+        head: ["", "Step", "Means"],
+        rows: [
+          ["**P**", "Parentheses (grouping)", "Work inside ( ), [ ], fraction bars and | | first"],
+          ["**E**", "Exponents", "Powers and roots"],
+          ["**M D**", "Multiply and Divide", "**left to right**, whichever comes first"],
+          ["**A S**", "Add and Subtract", "**left to right**, whichever comes first"]
+        ],
+        caption: "*Please Excuse My Dear Aunt Sally* helps you remember the letters. But M and D are a tie, and so are A and S: you don't always multiply before you divide."
+      },
+      worked: [
+        { problem: "{{3 + 4 * 2^2}}", steps: [["{{3 + 4 * 4}}", "Exponent first: 2² = 4."], ["{{3 + 16}}", "Multiply before you add."], ["{{19}}"]] },
+        { problem: "{{20 - 12 / 4 * 2}}", steps: [["{{20 - 3 * 2}}", "Divide and multiply left to right: 12 ÷ 4 comes first."], ["{{20 - 6}}", "Then 3 × 2."], ["{{14}}"]] }
+      ]
+    },
+    {
+      title: "Grouping symbols",
+      text: `Grouping symbols say "do this part first." They include parentheses ( ), brackets [ ], the **fraction bar**, and **absolute value** bars | |.
+
+- A fraction bar groups the whole top and the whole bottom: {{(8 + 4)/(5 - 2) = 12/3 = 4}}.
+- With groups inside groups, work from the **inside out**.`,
+      worked: [
+        { problem: "{{2[3 + (5 - 1)^2]}}", steps: [["{{2[3 + 4^2]}}", "Innermost group first: 5 − 1 = 4."], ["{{2[3 + 16]}}", "Exponent inside the brackets."], ["{{2[19] = 38}}", "Finish the brackets, then multiply."]] },
+        { problem: "{{(10 - 2 * 7)/(-2)}}", steps: [["{{(10 - 14)/(-2)}}", "In the top, multiply first."], ["{{-4/(-2) = 2}}", "Then divide. Same signs, positive."]] }
+      ]
+    }
+  ],
+  tasks: [
+    {
+      id: "t1", type: "solve", title: "Powers", pick: 6,
+      items: [
+        { q: "{{3^4}}", a: "81", from: "3^4", how: ["{{3 * 3 * 3 * 3}}", "9 × 9 = **81**"] },
+        { q: "{{(-2)^3}}", a: "-8", from: "(-2)^3", how: ["{{(-2)(-2)(-2)}}", "Odd number of negatives: **−8**"] },
+        { q: "{{-4^2}}", a: "-16", from: "-4^2", how: ["The base is 4: 4² = 16.", "Then the negative: **−16**"] },
+        { q: "{{(-4)^2}}", a: "16", from: "(-4)^2", how: ["{{(-4)(-4) = 16}}"] },
+        { q: "{{10^5}}", a: "100000", from: "10^5", how: ["1 followed by five zeros: **100,000**"] },
+        { q: "{{(1/2)^2}}", a: "1/4", from: "(1/2)^2", how: ["{{1/2 * 1/2 = 1/4}}"] },
+        { q: "{{7^1}}", a: "7", from: "7^1", how: ["Any number to the first power is itself: **7**"] },
+        { q: "{{(-1)^9}}", a: "-1", from: "(-1)^9", how: ["Nine negatives: odd, so **−1**"] },
+        { q: "{{2^5}}", a: "32", from: "2^5", how: ["2, 4, 8, 16, **32**"] }
+      ],
+      hints: ["An exponent is repeated multiplication, not multiplying by the exponent: {{3^4}} is not 12.", "Is the negative inside the parentheses? Then it's part of the base."]
+    },
+    {
+      id: "t2", type: "steps", title: "Step by step",
+      intro: "Put the steps for evaluating {{5 + 3(6 - 2)^2 / 8}} in order.",
+      items: ["{{5 + 3(4)^2 / 8}}", "{{5 + 3(16) / 8}}", "{{5 + 48 / 8}}", "{{5 + 6}}", "{{11}}"],
+      hints: ["Parentheses first, then the exponent.", "Multiply and divide left to right before you add."]
+    },
+    {
+      id: "t3", type: "solve", title: "Evaluate", pick: 6,
+      intro: "Use paper. Write one step per line, like the worked examples.",
+      items: [
+        { q: "{{6 + 4 * 2}}", a: "14", from: "6 + 4*2", how: ["Multiply first: 4 × 2 = 8.", "6 + 8 = **14**"] },
+        { q: "{{18 / 3 * 2}}", a: "12", from: "18/3*2", how: ["Left to right: 18 ÷ 3 = 6.", "6 × 2 = **12**"] },
+        { q: "{{10 - 2^3}}", a: "2", from: "10 - 2^3", how: ["Exponent first: 2³ = 8.", "10 − 8 = **2**"] },
+        { q: "{{(7 - 3)^2 * 2}}", a: "32", from: "(7-3)^2*2", how: ["{{4^2 * 2}}", "{{16 * 2 = 32}}"] },
+        { q: "{{-5 + 3 * (-4)}}", a: "-17", from: "-5 + 3*(-4)", how: ["Multiply: 3 × (−4) = −12.", "−5 + (−12) = **−17**"] },
+        { q: "{{40 / (6 - 1) * 2 - 3}}", a: "13", from: "40/(6-1)*2 - 3", how: ["Parentheses: 6 − 1 = 5.", "40 ÷ 5 = 8, then 8 × 2 = 16.", "16 − 3 = **13**"] },
+        { q: "{{12 - 2 * 3^2}}", a: "-6", from: "12 - 2*3^2", how: ["Exponent: 3² = 9.", "Multiply: 2 × 9 = 18.", "12 − 18 = **−6**"] },
+        { q: "{{-2^2 + 10 / 5}}", a: "-2", from: "-2^2 + 10/5", how: ["{{-2^2 = -4}} (the base is 2).", "10 ÷ 5 = 2.", "−4 + 2 = **−2**"] },
+        { q: "{{9 - 4 + 2}}", a: "7", from: "9 - 4 + 2", how: ["Left to right: 9 − 4 = 5.", "5 + 2 = **7** (not 9 − 6!)"] }
+      ],
+      hints: ["P, E, then M and D left to right, then A and S left to right.", "{{9 - 4 + 2}}: subtraction and addition are a tie, so go left to right."]
+    },
+    {
+      id: "t4", type: "mistake", title: "Where did it go wrong?",
+      intro: "Tap the **first line** with a mistake, then give the right answer.",
+      items: [
+        { q: "{{4 + 6 * 2}}", lines: ["{{10 * 2}}", "{{20}}"], bad: 0, why: "They added first. Multiply first: {{4 + 12 = 16}}.", a: "16", from: "4 + 6*2" },
+        { q: "{{24 / 4 * 2}}", lines: ["{{24 / 8}}", "{{3}}"], bad: 0, why: "Multiplication doesn't always come before division. Go left to right: {{6 * 2 = 12}}.", a: "12", from: "24/4*2" },
+        { q: "{{2 * 3^2}}", lines: ["{{6^2}}", "{{36}}"], bad: 0, why: "The exponent goes first, and only on the 3: {{2 * 9 = 18}}.", a: "18", from: "2*3^2" },
+        { q: "{{(15 - 3)/(2 + 4)}}", lines: ["{{12/(2 + 4)}}", "{{12/2 + 4}}", "{{10}}"], bad: 1, why: "The fraction bar groups the whole bottom. Keep it together: {{12/6 = 2}}.", a: "2", from: "(15-3)/(2+4)" }
+      ],
+      hints: ["Is there an exponent that should have gone first?", "Multiplication and division are a tie: left to right."]
+    },
+    {
+      id: "t5", type: "solve", title: "Groups inside groups", pick: 5,
+      items: [
+        { q: "{{(8 + 4)/(5 - 2)}}", a: "4", from: "(8+4)/(5-2)", how: ["Top: 12. Bottom: 3.", "12 ÷ 3 = **4**"] },
+        { q: "{{3[2 + (6 - 4)^3]}}", a: "30", from: "3*(2 + (6-4)^3)", how: ["Inside: 6 − 4 = 2, and 2³ = 8.", "{{3[2 + 8] = 3[10] = 30}}"] },
+        { q: "{{|4 - 9| + 2}}", a: "7", from: "abs(4-9) + 2", how: ["Inside the bars: 4 − 9 = −5, and |−5| = 5.", "5 + 2 = **7**"] },
+        { q: "{{(2^3 + 2)/(-5)}}", a: "-2", from: "(2^3 + 2)/(-5)", how: ["Top: 8 + 2 = 10.", "10 ÷ (−5) = **−2**"] },
+        { q: "{{-2[10 - 3(4 - 1)]}}", a: "-2", from: "-2*(10 - 3*(4-1))", how: ["Innermost: 4 − 1 = 3, then 3 × 3 = 9.", "10 − 9 = 1, and −2 × 1 = **−2**"] },
+        { q: "{{(6 - 10)^2 / (1 + 1)}}", a: "8", from: "(6-10)^2/(1+1)", how: ["Top: (−4)² = 16. Bottom: 2.", "16 ÷ 2 = **8**"] },
+        { q: "{{5 - |2 - 7| * 3}}", a: "-10", from: "5 - abs(2-7)*3", how: ["|2 − 7| = |−5| = 5.", "5 × 3 = 15, then 5 − 15 = **−10**"] }
+      ],
+      hints: ["Work from the innermost group outward.", "Treat a fraction bar like parentheses around the top and around the bottom."]
+    },
+    {
+      id: "t6", type: "quiz", title: "Settle the argument",
+      intro: "Back to the problem from the internet: {{8 / 2(2 + 2)}}.",
+      questions: [
+        { q: "Using the standard rule (× and ÷ left to right), what does {{8 / 2(2 + 2)}} equal?", choices: [["{{16}}", true, "8 ÷ 2 = 4, then 4 × 4 = 16."], ["{{1}}", false, "That does 2(4) before the division, which breaks the left-to-right rule."], ["{{4}}", false, "Finish the problem: there's one more multiplication."]], keepOrder: true },
+        { q: "Which way of writing it means **1**, with no argument possible?", choices: [["{{8/(2(2 + 2))}}", true, "The extra parentheses group the whole bottom."], ["{{(8/2)(2 + 2)}}", false, "This one is 4 × 4 = 16."], ["{{8 / 2 * (2 + 2)}}", false, "Left to right, this is 16."]] },
+        { q: "What's the best lesson from the whole argument?", choices: [["Use grouping symbols so a problem can only be read one way", true], ["Calculators are always right", false, "Different calculators actually give different answers to this one."], ["Math answers are a matter of opinion", false, "The answer depends on the rule you use, which is why we agree on rules."]] }
+      ]
+    }
+  ],
+  build: {
+    heading: "Make an order-of-operations puzzle",
+    prompt: `Create an expression that equals **your age** (or your favorite number). It must use **at least three different operations** and **parentheses or an exponent**. Then show how to evaluate it, **one step per line**, the way the worked examples do.`,
+    model: `My expression: 2(3 + 4) + 3^2 - 9 ÷ 9
+= 2(7) + 3^2 - 9 ÷ 9
+= 2(7) + 9 - 9 ÷ 9
+= 14 + 9 - 1
+= 22`,
+    placeholder: "My expression: …\n= …\n= …",
+    reqs: [
+      { t: "At least 4 lines (the expression plus 3 steps)", lines: 4 },
+      { t: "Parentheses or an exponent", re: "[(\\[^²³]" },
+      { t: "At least 3 equal signs", re: "=", min: 3 },
+      { t: "At least two operations from × ÷ * /", re: "[×÷*/·]|\\d\\(", min: 1 }
+    ]
+  },
+  reflect: {
+    q: "Millions of people argued about 8 ÷ 2(2 + 2). Why do you think it matters that mathematicians agree on one order of operations? What's another set of rules people agree on so they can understand each other?",
+    placeholder: "It matters because… Another set of rules is…"
+  },
+  challenge: [
+    {
+      id: "x1", type: "quiz", title: "Place the parentheses",
+      intro: "Where do parentheses go to make each statement true?",
+      questions: [
+        { q: "{{3 + 4 * 5 - 2 = 33}}", choices: [["{{(3 + 4) * 5 - 2}}", true, "7 × 5 − 2 = 33"], ["{{3 + 4 * (5 - 2)}}", false, "That's 3 + 12 = 15."], ["{{(3 + 4) * (5 - 2)}}", false, "That's 7 × 3 = 21."]] },
+        { q: "{{24 / 6 - 2 * 3 = 18}}", choices: [["{{24 / (6 - 2) * 3}}", true, "24 ÷ 4 × 3 = 18"], ["{{(24 / 6 - 2) * 3}}", false, "(4 − 2) × 3 = 6."], ["{{24 / (6 - 2 * 3)}}", false, "That divides by 0, which is undefined!"]] },
+        { q: "{{2 + 3^2 * 2 = 50}}", choices: [["{{(2 + 3)^2 * 2}}", true, "5² × 2 = 50"], ["{{2 + (3^2 * 2)}}", false, "That's 20."], ["{{(2 + 3^2) * 2}}", false, "That's 22."]] }
+      ]
+    },
+    {
+      id: "x2", type: "solve", title: "Expert evaluation",
+      items: [
+        { q: "{{-2^4 + (-2)^4}}", a: "0", from: "-2^4 + (-2)^4", how: ["{{-2^4 = -16}} and {{(-2)^4 = 16}}.", "−16 + 16 = **0**"] },
+        { q: "{{[(3 - 7)^2 - 6]/(-5)}}", a: "-2", from: "((3-7)^2 - 6)/(-5)", how: ["{{(-4)^2 = 16}}, and 16 − 6 = 10.", "10 ÷ (−5) = **−2**"] },
+        { q: "{{|3 - 8| - |-4| * 2}}", a: "-3", from: "abs(3-8) - abs(-4)*2", how: ["|−5| = 5 and |−4| = 4.", "5 − 4 × 2 = 5 − 8 = **−3**"] },
+        { q: "{{(4 + 4)/4 + 4}}", a: "6", from: "(4+4)/4 + 4", how: ["8 ÷ 4 = 2, then 2 + 4 = **6**"] },
+        { q: "{{2^(3^2)}} (do the exponent in the exponent first)", a: "512", from: "2^9", how: ["{{3^2 = 9}}", "{{2^9 = 512}}"] }
+      ]
+    }
+  ],
+  culture: "**Did you know?** The = sign was invented in 1557 (more about that in Module 8), but rules for the order of operations weren't written down in textbooks until around 1900. Before that, writers used words, extra parentheses or long bars over groups (called *vinculums*) to show what came first.",
+  teacher: {
+    snags: [
+      ["Task 1", "Types *−16* for {{(-4)^2}}", "The parentheses make −4 the base. Contrast with {{-4^2}}."],
+      ["Task 3", "Gets 3 for {{9 - 4 + 2}}", "Addition doesn't come before subtraction; it's left to right."],
+      ["Build", "Uses *x* for multiplication", "Students may type ×, *, or a number next to parentheses; any of those counts."]
+    ],
+    factcheck: "The 8 ÷ 2(2+2) argument went viral in late July 2019; Steven Strogatz, \"The Math Equation That Tried to Stump the Internet,\" *The New York Times*, August 2, 2019, explains the two readings. Florian Cajori (*A History of Mathematical Notations*, 1928–29) documents that order-of-operations conventions were stated in textbooks only from the early 20th century, and the vinculum as an older grouping symbol."
+  }
+};

@@ -1,0 +1,183 @@
+module.exports = {
+  num: 4, unit: 1, slug: "m04-variables-expressions", minutes: 35, calculator: "not needed",
+  title: "Variables and Expressions",
+  subtitle: "The vocabulary of algebra, translating words into math, and evaluating",
+  lede: "A variable is a letter that stands for a number. It sounds simple, but it took mathematicians thousands of years to start using letters this way. This week you'll learn to speak the language.",
+  recap: "Order of operations: grouping symbols, then exponents, then multiply and divide left to right, then add and subtract left to right.",
+  goals: [
+    "Name the parts of an expression: terms, coefficients, constants and variables",
+    "Translate word phrases into algebraic expressions",
+    "Evaluate an expression by substituting values for the variables"
+  ],
+  context: {
+    title: "The code breaker who invented letters for numbers",
+    place: "Tours, France · 1590",
+    text: `**François Viète** was a French lawyer who worked for King **Henry IV**. In 1590, during a war with Spain, the French captured secret letters written in a Spanish code with more than 500 symbols. Viète cracked it. The Spanish king, **Philip II**, was so shocked that he complained to the Pope that France must be using **black magic**.
+
+Viète's real "magic" was algebra. Before him, people wrote math problems in long sentences, like *"a thing, which multiplied by three and with five added, makes twenty."* In **1591**, Viète published a book that used **letters** for numbers: vowels for unknown amounts and consonants for known ones. Suddenly a whole family of problems could be written and solved at once.
+
+We still use his idea, though today we usually write unknowns with letters near the end of the alphabet, like **x** and **y** (that habit came from René Descartes about 45 years later). Viète's sentence is now just **3x + 5 = 20**.`,
+    ask: "Why might it help to write a problem with a letter instead of a sentence?"
+  },
+  learn: [
+    {
+      title: "The parts of an expression",
+      text: `An **expression** is a math phrase with numbers, variables and operations, but **no equal sign**, like {{7x - 4y + 3}}. (With an equal sign, it's an **equation**.)
+
+In {{7x - 4y + 3}}:
+- The **terms** are the parts being added or subtracted: {{7x}}, {{-4y}} and {{3}}.
+- The **variables** are the letters: {{x}} and {{y}}.
+- A **coefficient** is the number multiplied by a variable: 7 and −4. (In {{x}} by itself, the coefficient is 1.)
+- A **constant** is a term with no variable: 3.`,
+      flash: [["variable", "a letter that stands for a number"], ["coefficient", "the number in front of a variable (7 in 7x)"], ["constant", "a term that's just a number"], ["term", "a piece of an expression separated by + or −"], ["expression", "a math phrase with no equal sign"], ["equation", "two expressions with an equal sign between them"]]
+    },
+    {
+      title: "From words to algebra",
+      text: `Here's how common words translate. Use any letter for "a number," as long as you say what it means.`,
+      table: {
+        head: ["Words", "Algebra", "Watch out"],
+        rows: [
+          ["5 **more than** a number", "{{n + 5}}", ""],
+          ["3 **less than** a number", "{{n - 3}}", "**Order flips**: start with the number, then subtract 3."],
+          ["a number **decreased by** 8", "{{n - 8}}", ""],
+          ["**twice** a number; the **product** of 2 and a number", "{{2n}}", ""],
+          ["the **quotient** of a number and 4", "{{n/4}}", "The first one named goes on top."],
+          ["the **square** of a number", "{{n^2}}", ""],
+          ["6 **times the sum** of a number and 2", "{{6(n + 2)}}", "*Sum* is a group: use parentheses."]
+        ]
+      },
+      check: { q: "Which expression means \"7 less than a number\"?", choices: [["{{x - 7}}", true, "Start with the number, then take 7 away."], ["{{7 - x}}", false, "That's \"a number less than 7.\" *Less than* flips the order."], ["{{7x}}", false, "That's 7 times a number."]] }
+    },
+    {
+      title: "Evaluating expressions",
+      text: `To **evaluate** an expression, replace each variable with its value, then follow the order of operations.
+
+**Always put a substituted number in parentheses**, especially a negative. That keeps the signs and exponents right.`,
+      worked: [
+        { problem: "Evaluate {{2x^2 - x}} when {{x = -3}}.", steps: [["{{2(-3)^2 - (-3)}}", "Substitute, with parentheses."], ["{{2(9) - (-3)}}", "Exponent first: (−3)² = 9."], ["{{18 + 3 = 21}}", "Multiply, then subtract a negative."]] },
+        { problem: "Evaluate {{(a + b)/4}} when {{a = 10}} and {{b = -2}}.", steps: [["{{(10 + (-2))/4}}", "Substitute both."], ["{{8/4 = 2}}", "The fraction bar groups the top."]] }
+      ]
+    }
+  ],
+  tasks: [
+    {
+      id: "t1", type: "select", title: "Name the parts",
+      items: [
+        "In {{9x - 2}}, the number 9 is the {coefficient|constant|variable}.",
+        "In {{9x - 2}}, the −2 is the {constant|coefficient|exponent}.",
+        "The expression {{4a + 3b - 7}} has {3|2|4} terms.",
+        "In {{y + 6}}, the coefficient of {{y}} is {1|0|6}.",
+        "{{5x + 1 = 11}} is an {equation|expression}, because it has an equal sign.",
+        "In {{-8m^2}}, the coefficient is {−8|8|2}."
+      ],
+      hints: ["The coefficient is the number multiplied by the variable, including its sign.", "Terms are separated by + and − signs."]
+    },
+    {
+      id: "t2", type: "match", title: "Words to expressions", left: "Words", right: "Expression",
+      pairs: [
+        ["a number increased by 9", "{{n + 9}}"], ["9 less than a number", "{{n - 9}}"], ["9 minus a number", "{{9 - n}}"],
+        ["the product of 9 and a number", "{{9n}}"], ["a number divided by 9", "{{n/9}}"], ["the square of a number, plus 9", "{{n^2 + 9}}"],
+        ["9 times the sum of a number and 1", "{{9(n + 1)}}"]
+      ],
+      hints: ["*Less than* flips the order. *Minus* doesn't.", "*The sum of* means the adding happens first, so it needs parentheses."]
+    },
+    {
+      id: "t3", type: "order", title: "Build the expression",
+      intro: "Tap the tiles in order to build each expression. Use **x** for the number.",
+      items: [
+        { q: "Three less than twice a number", a: "2x - 3", extra: ["3 - 2x"] },
+        { q: "Five more than the square of a number", a: "x^2 + 5", alt: ["5 + x^2"], extra: ["2x"] },
+        { q: "The quotient of a number and 6, minus 1", a: "x/6 - 1", extra: ["6/x"] },
+        { q: "Four times the difference of a number and 7", a: "4 ( x - 7 )", extra: ["4x"] }
+      ],
+      hints: ["Read the phrase slowly and decide what happens first.", "*The difference of a number and 7* is a group: (x − 7)."]
+    },
+    {
+      id: "t4", type: "solve", title: "Evaluate", pick: 6,
+      intro: "Use {{x = 4}} and {{y = -2}}. Substitute with parentheses on paper first.",
+      items: [
+        { q: "{{3x + 5}}", a: "17", from: "3*4 + 5", how: ["{{3(4) + 5 = 12 + 5}}", "**17**"] },
+        { q: "{{5y - 1}}", a: "-11", from: "5*(-2) - 1", how: ["{{5(-2) - 1 = -10 - 1}}", "**−11**"] },
+        { q: "{{x^2 + y}}", a: "14", from: "4^2 + (-2)", how: ["{{(4)^2 + (-2) = 16 - 2}}", "**14**"] },
+        { q: "{{y^2}}", a: "4", from: "(-2)^2", how: ["{{(-2)^2 = 4}}"] },
+        { q: "{{xy}}", a: "-8", from: "4*(-2)", how: ["{{xy}} means x times y: {{(4)(-2) = -8}}"] },
+        { q: "{{(x - y)/3}}", a: "2", from: "(4 - (-2))/3", how: ["{{(4 - (-2))/3 = 6/3}}", "**2**"] },
+        { q: "{{-x + 2y}}", a: "-8", from: "-4 + 2*(-2)", how: ["{{-(4) + 2(-2) = -4 - 4}}", "**−8**"] },
+        { q: "{{2x^2 - 3y}}", a: "38", from: "2*4^2 - 3*(-2)", how: ["{{2(16) - 3(-2) = 32 + 6}}", "**38**"] },
+        { q: "{{(x + y)^2}}", a: "4", from: "(4 + (-2))^2", how: ["{{(4 + (-2))^2 = 2^2}}", "**4**"] }
+      ],
+      hints: ["Replace each letter with its number in parentheses: x becomes (4) and y becomes (−2).", "{{xy}} means x times y."]
+    },
+    {
+      id: "t5", type: "grid", title: "Input and output",
+      intro: "Evaluate {{3x + 2}} for each value of {{x}}.",
+      tables: [{ corner: "{{x}}", cols: ["{{3x + 2}}"], fn: "3x + 2", rows: [["0", "2"], ["1", "5"], ["2", "8"], ["5", "17"], ["-1", "-1"], ["-4", "-10"]], given: [[0, 0]] }],
+      hints: ["For x = −1: {{3(-1) + 2 = -3 + 2}}.", "Notice the pattern: each time x goes up by 1, the output goes up by 3."]
+    },
+    {
+      id: "t6", type: "solve", title: "Expressions in real life",
+      intro: "First write an expression (with a variable), then use it.",
+      items: [
+        { q: "A pizza costs **$12** plus **$1.50** for each topping. Write an expression for the cost with {{t}} toppings.", a: "12 + 1.5t", pre: "cost =", from: "12 + 1.5t", how: ["Fixed part: 12. Changing part: 1.50 for each topping, so {{1.5t}}.", "**12 + 1.5t**"] },
+        { q: "Use your expression: what does a pizza with **4 toppings** cost?", a: "18", pre: "$", from: "12 + 1.5*4", how: ["{{12 + 1.5(4) = 12 + 6}}", "**$18**"] },
+        { q: "A phone has **80%** battery and loses **6%** every hour. Write an expression for the battery after {{h}} hours.", a: "80 - 6h", pre: "battery =", from: "80 - 6h", how: ["Start at 80, subtract 6 for each hour: **80 − 6h**"] },
+        { q: "Use your expression: what's the battery after **5 hours**?", a: "50", post: "%", from: "80 - 6*5", how: ["{{80 - 6(5) = 80 - 30}}", "**50%**"] }
+      ],
+      hints: ["Find the part that stays the same and the part that changes with the variable.", "*For each* or *per* usually means multiply by the variable."]
+    }
+  ],
+  build: {
+    heading: "An expression from your life",
+    prompt: `Invent an expression for something in your life that depends on a number: movie tickets, game coins, minutes of practice, money saved per week.
+
+1. Say what your **variable** stands for.
+2. Write the **expression**.
+3. **Evaluate** it for two different values and say what the answers mean.`,
+    model: `Let w be the number of weeks. I have $40 saved and I save $15 each week, so my savings are 40 + 15w. After 4 weeks: 40 + 15(4) = 40 + 60 = 100, so I'd have $100. After 10 weeks: 40 + 15(10) = 190, so I'd have $190.`,
+    placeholder: "Let ___ be the number of …",
+    reqs: [
+      { t: "Say what the variable stands for (*let x be…* or *x is…*)", re: "\\b(let|where|stands? for|is the number|represents?)\\b" },
+      { t: "An expression with a variable, like 15w or 3x", re: "\\d\\s*[a-z]\\b" },
+      { t: "Evaluate it twice (two equal signs with answers)", re: "=\\s*\\$?[-−]?\\d", min: 2 },
+      { t: "At least 3 sentences", sentences: 3 }
+    ]
+  },
+  reflect: {
+    q: "Philip II thought Viète's code breaking was black magic, but it was really careful thinking. Has math (or anything else) ever seemed like magic to you until someone explained it? What changed when you understood it?",
+    placeholder: "Something that seemed like magic was…"
+  },
+  challenge: [
+    {
+      id: "x1", type: "solve", title: "Tougher substitutions",
+      intro: "Use {{a = -3}}, {{b = 1/2}} and {{c = 4}}.",
+      items: [
+        { q: "{{-2a^2b}}", a: "-9", from: "-2*(-3)^2*(1/2)", how: ["{{-2(-3)^2(1/2) = -2(9)(1/2)}}", "**−9**"] },
+        { q: "{{(a + c)/(2b)}}", a: "1", from: "(-3 + 4)/(2*(1/2))", how: ["Top: −3 + 4 = 1. Bottom: 2(1/2) = 1.", "**1**"] },
+        { q: "{{c^2 - 4ab}}", a: "22", from: "4^2 - 4*(-3)*(1/2)", how: ["{{16 - 4(-3)(1/2) = 16 - (-6)}}", "**22**"] },
+        { q: "{{|a - c| - a^2}}", a: "-2", from: "abs(-3 - 4) - (-3)^2", how: ["|−7| = 7 and (−3)² = 9.", "7 − 9 = **−2**"] }
+      ]
+    },
+    {
+      id: "x2", type: "solve", title: "Find the rule",
+      intro: "Write an expression for the pattern, using {{n}}.",
+      fig: "squares",
+      items: [
+        { q: "One square takes 4 toothpicks, two squares in a row take 7, three take 10. How many toothpicks do {{n}} squares take?", a: "3n + 1", from: "3n+1", how: ["Each new square adds 3 toothpicks.", "Start with 1 extra (the first left side): **3n + 1**"] },
+        { q: "How many toothpicks for **50** squares?", a: "151", from: "3*50 + 1", how: ["{{3(50) + 1 = 151}}"] },
+        { q: "Seats: 1 table seats 4 people, 2 tables pushed together seat 6, 3 tables seat 8. How many people can {{n}} tables seat?", a: "2n + 2", from: "2n + 2", how: ["Each table adds 2 seats (one on each side).", "Plus 1 at each end: **2n + 2**"] }
+      ]
+    }
+  ],
+  figs: {
+    squares: { x: [0, 7], y: [0, 2], w: 300, pad: 14, segs: [[0, 0, 7, 0, 0], [0, 1, 7, 1, 0], [0, 0, 0, 1, 0], [1, 0, 1, 1, 0], [2, 0, 2, 1, 0], [3, 0, 3, 1, 0], [5, 0, 5, 1, 1], [6, 0, 6, 1, 1], [7, 0, 7, 1, 1], [5, 0, 7, 0, 1], [5, 1, 7, 1, 1]], alt: "Toothpick squares in a row" }
+  },
+  culture: "**Did you know?** The word *algebra* comes from the Arabic *al-jabr*, from a book written in Baghdad around AD 820. You'll meet its author in Module 6.",
+  teacher: {
+    snags: [
+      ["Task 1", "Picks 9 for the coefficient of {{-8m^2}}", "The sign belongs to the coefficient."],
+      ["Task 3", "Builds *3 − 2x*", "*Less than* reverses the order. The extra tile is there on purpose."],
+      ["Task 6", "Writes *1.5t + 12*", "Any equivalent expression is accepted."]
+    ],
+    factcheck: "Viète deciphered Spanish dispatches for Henry IV around 1589–1590; Philip II's complaint to the Pope that the French used sorcery is reported in standard histories (e.g., David Kahn, *The Codebreakers*). *In artem analyticem isagoge* (1591) used vowels for unknowns and consonants for knowns. Descartes's *La Géométrie* (1637) popularized x, y, z for unknowns. The 500-symbol figure is the usual description of the Spanish cipher."
+  }
+};

@@ -1,0 +1,170 @@
+module.exports = {
+  num: 25, unit: 5, slug: "m25-exponential", minutes: 40, calculator: "allowed",
+  title: "Exponential Growth and Decay",
+  subtitle: "Multiplying instead of adding: doubling, percent growth, depreciation and half-life",
+  lede: "Linear things grow by adding the same amount. Exponential things grow by multiplying by the same amount, and that changes everything. This week: why a folded piece of paper could reach the Moon.",
+  recap: "Exponent rules: multiply → add exponents, divide → subtract, power of a power → multiply. x⁰ = 1, x⁻ⁿ = 1/xⁿ.",
+  goals: [
+    "Tell linear and exponential patterns apart",
+    "Write and evaluate exponential functions y = a·bˣ",
+    "Model growth and decay with percents, y = a(1 + r)ᵗ and y = a(1 − r)ᵗ"
+  ],
+  context: {
+    title: "The student who folded paper 12 times",
+    place: "Pomona, California · January 2002",
+    text: `There's an old saying that you can't fold a piece of paper in half more than **7 or 8 times**, no matter how big it is. In **2001**, a high school junior named **Britney Gallivan** was offered extra credit to prove it wrong.
+
+Britney figured out *why* it's so hard. Every fold **doubles** the thickness: 1 layer, 2, 4, 8, 16, … After {{n}} folds there are {{2^n}} layers. But each fold also uses up more paper around the curved edge, so the paper has to be **much longer** than you'd think. She worked out the math, wrote an equation for the length needed, and then went to a mall in Pomona with a roll of special toilet paper about **4,000 feet** (1.2 km) long.
+
+In January **2002**, after seven hours of careful folding with her family, Britney folded it in half **12 times**, a world record at the time. She was a high school student when she did it.
+
+The math behind it is **exponential growth**. A sheet 0.1 mm thick, folded 42 times (if that were possible), would be {{0.1 * 2^42}} mm thick: more than **400,000 km**, farther than the Moon.`,
+    ask: "If each fold doubles the thickness, how many layers are there after 10 folds? (Hint: 2¹⁰.)"
+  },
+  learn: [
+    {
+      title: "Adding vs. multiplying",
+      text: `- **Linear**: add (or subtract) the **same amount** each step. 3, 5, 7, 9, 11 (add 2). Graph: a straight line.
+- **Exponential**: multiply by the **same factor** each step. 3, 6, 12, 24, 48 (times 2). Graph: a curve that gets steeper and steeper.
+
+At first they can look similar. But exponential growth always wins in the end: after 20 steps, adding 2 gets you to 43, while doubling gets you past **3 million**.`,
+      fig: "versus",
+      check: { q: "Is 5, 15, 45, 135, … linear or exponential?", choices: [["exponential: it multiplies by 3", true], ["linear: it adds 10", false, "15 − 5 = 10, but 45 − 15 = 30. Not the same amount added."]], keepOrder: true }
+    },
+    {
+      title: "Exponential functions",
+      text: `An **exponential function** has the form
+
+> {{y = a * b^x}}
+
+- {{a}} is the **starting value** (when x = 0, {{b^0 = 1}}, so y = a).
+- {{b}} is the **growth factor**: what you multiply by each step.
+- If {{b > 1}}: **growth**. If {{0 < b < 1}}: **decay** (shrinking).`,
+      worked: [
+        { problem: "Bacteria start at 50 and double every hour. How many after 6 hours?", steps: [["{{y = 50 * 2^x}}", "a = 50, b = 2."], ["{{y = 50 * 2^6 = 50 * 64}}", "Exponent first!"], ["{{= 3200}} bacteria"]] },
+        { problem: "A 200 mg dose of medicine is cut in half every 4 hours (its **half-life**). How much is left after 12 hours?", steps: [["12 hours is 3 half-lives."], ["{{200 * (1/2)^3 = 200 * 1/8}}"], ["{{= 25}} mg"]] }
+      ]
+    },
+    {
+      title: "Percent growth and decay",
+      text: `Growth or decay by a **percent** each year uses the same idea:
+
+- **Growth** by r percent: multiply by {{(1 + r)}}. Up 5% means ×1.05.
+- **Decay** by r percent: multiply by {{(1 - r)}}. Down 15% means ×0.85.
+
+> Growth: {{y = a(1 + r)^t}}    Decay: {{y = a(1 - r)^t}}
+
+A $20,000 car that loses 15% of its value each year is worth {{20000(0.85)^t}} after t years. After 3 years: {{20000(0.85)^3 ≈ 12283}} dollars.`,
+      tip: "Use a calculator's ^ key (or xʸ) for powers like 0.85³. Type the base, ^, then the exponent."
+    }
+  ],
+  tasks: [
+    {
+      id: "t1", type: "sort", title: "Linear or exponential?",
+      cats: ["Linear", "Exponential", "Neither"],
+      items: [
+        ["2, 4, 6, 8, …", 0], ["2, 4, 8, 16, …", 1], ["100, 50, 25, 12.5, …", 1, "Multiplied by 1/2."], ["100, 90, 80, 70, …", 0],
+        ["{{y = 3x + 1}}", 0], ["{{y = 3^x}}", 1], ["{{y = 500(0.9)^t}}", 1, "Decay: multiply by 0.9."], ["1, 4, 9, 16, …", 2, "Squares: neither adds nor multiplies by a constant."]
+      ],
+      hints: ["Same difference → linear. Same ratio (divide each term by the one before) → exponential."]
+    },
+    {
+      id: "t2", type: "grid", title: "Linear vs. exponential table",
+      intro: "Fill in both columns. Watch how fast the second one grows.",
+      tables: [{ corner: "{{x}}", cols: ["{{y = 5x}}", "{{y = 2^x}}"], rows: [["0", "0", "1"], ["1", "5", "2"], ["2", "10", "4"], ["4", "20", "16"], ["6", "30", "64"], ["10", "50", "1024"]], given: [[0, 0], [0, 1]] }],
+      hints: ["{{2^6 = 2 * 2 * 2 * 2 * 2 * 2}}.", "For y = 5x, just multiply by 5."]
+    },
+    {
+      id: "t3", type: "solve", title: "Evaluate", pick: 5,
+      intro: "Calculator allowed. Exponent first, then multiply.",
+      items: [
+        { q: "{{y = 3 * 2^x}} when {{x = 5}}", a: "96", from: "3*2^5", how: ["{{2^5 = 32}}", "{{3 * 32 = 96}}"] },
+        { q: "{{y = 100(1/2)^x}} when {{x = 3}}", a: "12.5", from: "100*(1/2)^3", how: ["{{(1/2)^3 = 1/8}}", "{{100/8 = 12.5}}"] },
+        { q: "{{f(x) = 4^x}}. Find {{f(3)}}.", a: "64", from: "4^3", how: ["{{4^3 = 64}}"] },
+        { q: "{{y = 1000(1.1)^t}} when {{t = 2}}", a: "1210", from: "1000*1.1^2", how: ["{{1.1^2 = 1.21}}", "**1,210**"] },
+        { q: "{{y = 5 * 3^x}} when {{x = 0}}", a: "5", from: "5*3^0", how: ["{{3^0 = 1}}: y = a = **5**"] },
+        { q: "{{y = 80(0.5)^x}} when {{x = 4}}", a: "5", from: "80*0.5^4", how: ["{{0.5^4 = 0.0625}}", "{{80 * 0.0625 = 5}}"] },
+        { q: "{{y = 2 * 3^x}} when {{x = -1}}", a: "2/3", from: "2*3^(-1)", how: ["{{3^(-1) = 1/3}}", "**2/3**"] }
+      ],
+      hints: ["Do the power before multiplying: {{3 * 2^5}} is {{3 * 32}}, not {{6^5}}."]
+    },
+    {
+      id: "t4", type: "select", title: "Growth or decay?",
+      items: [
+        "{{y = 50(1.08)^t}} shows {growth|decay} of {8%|108%|0.08%} per step.",
+        "{{y = 50(0.92)^t}} shows {decay|growth} of {8%|92%|0.92%} per step.",
+        "A population growing **3%** a year has growth factor {1.03|0.03|3|0.97}.",
+        "A car losing **20%** of its value each year has factor {0.8|1.2|0.2|20}.",
+        "In {{y = 6 * 2^x}}, the starting value is {6|2|12}."
+      ],
+      hints: ["Growth factor = 1 + rate. Decay factor = 1 − rate.", "Factor 1.08 → +8%. Factor 0.92 → −8%."]
+    },
+    {
+      id: "t5", type: "solve", title: "Real-world models",
+      intro: "Calculator allowed. Write the model, then evaluate. Round money to the nearest cent and others as asked.",
+      items: [
+        { q: "Britney's paper: each fold doubles the layers. How many layers after **12 folds**?", a: "4096", post: "layers", from: "2^12", how: ["{{2^12 = 4096}}"] },
+        { q: "A video gets **200 views** on day 0, and the views **triple** each day. How many views on day 5?", a: "48600", post: "views", from: "200*3^5", how: ["{{200 * 3^5 = 200 * 243}}", "**48,600**"] },
+        { q: "**$500** is invested at **6%** interest per year. How much after **2 years**?", a: "561.8", pre: "$", from: "500*1.06^2", how: ["{{500(1.06)^2 = 500 * 1.1236}}", "**$561.80**"] },
+        { q: "A **$24,000** car loses **25%** of its value each year. What's it worth after **2 years**?", a: "13500", pre: "$", from: "24000*0.75^2", how: ["{{24000(0.75)^2 = 24000 * 0.5625}}", "**$13,500**"] },
+        { q: "A radioactive sample of **640 g** has a half-life of **5 years**. How many grams are left after **20 years**?", a: "40", post: "g", from: "640*(1/2)^4", how: ["20 years = 4 half-lives", "{{640 * (1/2)^4 = 640/16 = 40}} g"] }
+      ],
+      hints: ["y = a · bᵗ: a is the start, b is the factor, t is the number of steps.", "For half-life, count how many half-lives fit in the time."]
+    },
+    {
+      id: "t6", type: "quiz", title: "Read the graph",
+      questions: [
+        { q: "Which graph shows exponential **growth**?", fig: "g3", choices: [["the curve that gets steeper (B)", true], ["the straight line (A)", false, "A straight line is linear."], ["the curve that flattens toward 0 (C)", false, "That one is decay."]] },
+        { q: "In curve B, {{y = 2^x}}. Where does it cross the y-axis?", choices: [["{{(0, 1)}}", true, "2⁰ = 1."], ["{{(0, 0)}}", false, "2⁰ isn't 0."], ["{{(0, 2)}}", false]] },
+        { q: "Does curve C, {{y = 8(1/2)^x}}, ever reach 0?", choices: [["No: it keeps halving, getting closer to 0 forever", true], ["Yes, at x = 8", false], ["Yes, at x = 3", false, "At x = 3 it's 1."]] }
+      ]
+    }
+  ],
+  build: {
+    heading: "Linear or exponential?",
+    prompt: `Someone offers you a choice for a 30-day job: **(A) $1,000 a day**, or **(B) 1 penny on day 1, 2 pennies on day 2, 4 on day 3**, doubling every day. Write a **model for each** (a linear one and an exponential one), calculate **day 30's pay** for each, and explain **which you'd choose and why**. (Calculator: day 30 of B is {{0.01 * 2^29}}.)`,
+    model: `Option A is linear: on day d it pays 1000 dollars, and the total after d days is 1000d. Option B is exponential: on day d it pays 0.01 × 2^(d - 1). On day 30, A pays $1,000, but B pays 0.01 × 2^29 = $5,368,709.12. I'd choose B because doubling grows so fast that by the end it pays millions, even though it starts with a penny.`,
+    placeholder: "Option A is linear: … Option B is exponential: …",
+    reqs: [
+      { t: "Use the words *linear* and *exponential*", re: "\\b(linear|exponential)\\b", min: 2 },
+      { t: "An exponent in your model (^ or ²)", re: "\\^|[²³⁴⁵⁶⁷⁸⁹]" },
+      { t: "Day 30's pay for option B (it's in the millions)", re: "5,?368,?709" },
+      { t: "Explain your choice (use *because*)", re: "\\bbecause\\b" }
+    ]
+  },
+  reflect: {
+    q: "Britney Gallivan didn't just try harder: she figured out the math of *why* folding was hard, then used it to plan. When have you used understanding (not just effort) to solve a problem? How might that help you in math?",
+    placeholder: "Once I figured out why…"
+  },
+  challenge: [
+    {
+      id: "x1", type: "solve", title: "Compound interest",
+      intro: "Calculator. When interest is added {{n}} times a year: {{A = P(1 + r/n)^(nt)}}.",
+      items: [
+        { q: "**$1,000** at **6%**, compounded **monthly** ({{n = 12}}) for **1 year**. Round to the nearest cent.", a: "1061.68", pre: "$", how: ["{{1000(1 + 0.06/12)^12 = 1000(1.005)^12}}", "≈ **$1,061.68**"] },
+        { q: "How many **years** does it take money to **double** at 7% per year (compounded yearly)? Try values of t in {{(1.07)^t}}. Give the first whole number of years where it's at least double.", a: "11", post: "years", how: ["{{1.07^10 ≈ 1.97}} and {{1.07^11 ≈ 2.10}}", "**11 years** (the *rule of 72*: 72 ÷ 7 ≈ 10.3)"] }
+      ]
+    },
+    {
+      id: "x2", type: "solve", title: "Paper to the Moon",
+      intro: "A sheet of paper is {{0.1}} mm thick. After {{n}} folds it would be {{0.1 * 2^n}} mm thick (if you could fold it).",
+      items: [
+        { q: "How thick (in mm) after **20** folds?", a: "104857.6", post: "mm", from: "0.1*2^20", how: ["{{0.1 * 1,048,576 = 104,857.6}} mm, about 105 meters: taller than a 30-story building!"] },
+        { q: "The Moon is about {{384,400}} km = {{3.844 * 10^11}} mm away. What's the **fewest** folds to reach it? Try {{0.1 * 2^n}} for n near 40.", a: "42", post: "folds", how: ["{{0.1 * 2^41 ≈ 2.2 * 10^11}} mm: not enough.", "{{0.1 * 2^42 ≈ 4.4 * 10^11}} mm: past the Moon. **42 folds**."] }
+      ]
+    }
+  ],
+  figs: {
+    versus: { x: [0, 6], y: [0, 70], ystep: 10, h: 220, w: 280, lines: [{ fn: "2x + 3", label: "add 2" }, { fn: "3*2^x", c: 1, label: "×2" }], points: [[0, 3], [1, 5], [2, 7], [3, 9], [4, 11], [5, 13], [1, 6, "", 1], [2, 12, "", 1], [3, 24, "", 1], [4, 48, "", 1]], alt: "A straight line adding 2 and a curve doubling, starting at 3" },
+    g3: { x: [-1, 4], y: [-1, 9], w: 240, lines: [{ fn: "x + 1", label: "A" }, { fn: "2^x", c: 1, label: "B" }, { fn: "8*(1/2)^x", c: 2, label: "C", at: [3, 1] }], alt: "Graph A is a line, B is a curve rising steeply, C is a curve falling toward 0" }
+  },
+  culture: "**Did you know?** After Britney's record, students at St. Mark's School in Massachusetts folded a 16-kilometer roll of toilet paper 13 times in 2011, along MIT's Infinite Corridor. Doubling makes each new fold dramatically harder.",
+  teacher: {
+    snags: [
+      ["Task 3", "Multiplies before the exponent ({{3 * 2^5 = 6^5}})", "Order of operations: exponent first."],
+      ["Task 4", "Says 0.92 means 92% decay", "Decay factor = 1 − rate, so 0.92 is an 8% decrease."],
+      ["Task 5", "Types *561.80* or *561.8*", "Both are accepted."]
+    ],
+    factcheck: "Britney Gallivan (Pomona High School) folded paper 12 times in January 2002 using about 4,000 ft (1.2 km) of special thin toilet paper, after deriving a formula for the length needed (*How to Fold Paper in Half Twelve Times*, 2002). In 2011, students at St. Mark's School and MIT folded a long roll 13 times. 0.1 mm × 2⁴² ≈ 439,804 km (Moon about 384,400 km). Penny-doubling: day 30 = 2²⁹ cents = $5,368,709.12."
+  }
+};

@@ -1,0 +1,176 @@
+module.exports = {
+  num: 15, unit: 3, slug: "m15-sequences", minutes: 35, calculator: "not needed",
+  title: "Patterns and Sequences",
+  subtitle: "Arithmetic sequences, the common difference and a formula for the nth term",
+  lede: "A sequence is a list of numbers that follows a pattern. If you can find the rule, you can jump straight to the 100th number without listing the 99 before it.",
+  recap: "A function gives each input exactly one output. f(4) means the output when the input is 4. The domain is the inputs; the range is the outputs.",
+  goals: [
+    "Recognize an arithmetic sequence and find its common difference",
+    "Write a rule for the nth term and use it to find any term",
+    "Connect arithmetic sequences to linear functions"
+  ],
+  context: {
+    title: "The boy who added 1 to 100 in seconds",
+    place: "Brunswick, Germany · about 1786",
+    text: `When **Carl Friedrich Gauss** was about nine years old, his teacher wanted some peace and quiet. He told the class to add up every number from **1 to 100**. Then he sat back, expecting it to take an hour.
+
+Gauss wrote one number on his slate and put it on the teacher's desk almost immediately: **5050**. He was the only one who got it right.
+
+Here's what he noticed. Write the numbers forward and backward:
+
+> 1 + 2 + 3 + … + 98 + 99 + 100
+> 100 + 99 + 98 + … + 3 + 2 + 1
+
+Each column adds to **101**, and there are **100** columns. That's 100 × 101 = 10,100, which counts every number twice. Half of that is **5050**.
+
+The story was told by a friend of Gauss's years later, and the details may have grown with time. But Gauss really did grow up to be one of the greatest mathematicians in history. The trick works because the list goes up by the same amount every time. That kind of list is called an **arithmetic sequence**.`,
+    ask: "Could you use Gauss's trick to add 1 + 2 + 3 + … + 10 quickly? Try it."
+  },
+  learn: [
+    {
+      title: "Arithmetic sequences",
+      text: `A **sequence** is an ordered list of numbers, called **terms**. In an **arithmetic sequence**, you add the **same number** each time to get the next term. That number is the **common difference**, {{d}}.
+
+- 3, 7, 11, 15, … : add 4 each time, so {{d = 4}}.
+- 20, 17, 14, 11, … : add −3 each time, so {{d = -3}}.
+- 2, 4, 8, 16, … : **not** arithmetic. The differences are 2, 4, 8 (it multiplies by 2 instead).
+
+To find {{d}}, subtract any term from the **next** one: {{d = (second) - (first)}}.`,
+      check: { q: "What's the common difference of 5, 1, −3, −7, …?", choices: [["{{-4}}", true, "1 − 5 = −4."], ["{{4}}", false, "The terms are going down, so d is negative."], ["{{-3}}", false]] }
+    },
+    {
+      title: "A formula for any term",
+      text: `Call the first term {{a(1)}}, the second {{a(2)}}, and so on. To get from the 1st term to the nth term, you add {{d}} exactly {{n - 1}} times. So:
+
+> {{a(n) = a(1) + (n - 1)d}}
+
+For 3, 7, 11, 15, …: {{a(1) = 3}} and {{d = 4}}, so {{a(n) = 3 + (n - 1)4}}. Simplify: {{a(n) = 4n - 1}}.`,
+      worked: [
+        { problem: "Find the 50th term of 3, 7, 11, 15, …", steps: [["{{a(50) = 3 + (50 - 1)4}}", "Use the formula with n = 50."], ["{{= 3 + 49 * 4 = 3 + 196}}"], ["{{= 199}}"]] },
+        { problem: "Write a rule for 20, 17, 14, 11, …", steps: [["{{a(1) = 20}}, {{d = -3}}"], ["{{a(n) = 20 + (n - 1)(-3)}}"], ["{{a(n) = 20 - 3n + 3 = -3n + 23}}", "Distribute and combine."]] }
+      ]
+    },
+    {
+      title: "Sequences are linear functions",
+      text: `Look at {{a(n) = 4n - 1}}: it's a function whose inputs are 1, 2, 3, … (the term numbers). If you plot (1, 3), (2, 7), (3, 11), (4, 15), the points fall on a **straight line**.
+
+The common difference is how much the output goes up each time the input goes up by 1. In Unit 4 you'll call that the **slope**.`,
+      fig: "seq"
+    }
+  ],
+  tasks: [
+    {
+      id: "t1", type: "sort", title: "Arithmetic or not?",
+      cats: ["Arithmetic", "Not arithmetic"],
+      items: [
+        ["5, 10, 15, 20, …", 0], ["1, 4, 9, 16, …", 1, "Differences 3, 5, 7: not the same."], ["10, 7, 4, 1, …", 0], ["2, 6, 18, 54, …", 1, "Multiplies by 3."],
+        ["−8, −5, −2, 1, …", 0], ["1, 1/2, 1/4, 1/8, …", 1, "Halves each time."], ["0.5, 1.25, 2, 2.75, …", 0, "Adds 0.75."], ["7, 7, 7, 7, …", 0, "d = 0 counts!"]
+      ],
+      hints: ["Subtract each term from the next. Are the differences all the same?"]
+    },
+    {
+      id: "t2", type: "cloze", title: "Continue the pattern",
+      intro: "Fill in the common difference and the next two terms.",
+      items: [
+        "6, 11, 16, 21: {{d = }}[5], next [26], [31]",
+        "40, 32, 24, 16: {{d = }}[-8], next [8], [0]",
+        "−9, −6, −3, 0: {{d = }}[3], next [3], [6]",
+        "2.5, 4, 5.5, 7: {{d = }}[1.5], next [8.5], [10]",
+        "1, −1, −3, −5: {{d = }}[-2], next [-7], [-9]"
+      ],
+      hints: ["d = second term − first term.", "Keep adding d to get the next terms."]
+    },
+    {
+      id: "t3", type: "solve", title: "Find the term", pick: 4,
+      intro: "Use {{a(n) = a(1) + (n - 1)d}}.",
+      items: [
+        { q: "The 10th term of 4, 9, 14, 19, …", a: "49", from: "4 + 9*5", how: ["{{a(10) = 4 + 9(5)}}", "**49**"] },
+        { q: "The 25th term of 2, 5, 8, 11, …", a: "74", from: "2 + 24*3", how: ["{{a(25) = 2 + 24(3)}}", "**74**"] },
+        { q: "The 12th term of 50, 46, 42, 38, …", a: "6", from: "50 + 11*(-4)", how: ["{{a(12) = 50 + 11(-4) = 50 - 44}}", "**6**"] },
+        { q: "The 100th term of 1, 2, 3, 4, …", a: "100", from: "1 + 99*1", how: ["**100**, of course!"] },
+        { q: "The 30th term of −7, −1, 5, 11, …", a: "167", from: "-7 + 29*6", how: ["{{a(30) = -7 + 29(6) = -7 + 174}}", "**167**"] }
+      ],
+      hints: ["Find a(1) and d first.", "Multiply d by (n − 1), not by n."]
+    },
+    {
+      id: "t4", type: "solve", title: "Write the rule", pick: 4,
+      intro: "Write a simplified rule for the nth term, like **4n - 1**.",
+      items: [
+        { q: "3, 7, 11, 15, …", a: "4n - 1", pre: "a(n) =", from: "3 + (n - 1)*4", how: ["{{3 + (n - 1)4 = 3 + 4n - 4}}", "**4n − 1**"] },
+        { q: "5, 7, 9, 11, …", a: "2n + 3", pre: "a(n) =", from: "5 + (n - 1)*2", how: ["{{5 + 2n - 2}}", "**2n + 3**"] },
+        { q: "10, 20, 30, 40, …", a: "10n", pre: "a(n) =", from: "10 + (n - 1)*10", how: ["{{10 + 10n - 10}}", "**10n**"] },
+        { q: "20, 17, 14, 11, …", a: "-3n + 23", pre: "a(n) =", from: "20 + (n - 1)*(-3)", how: ["{{20 - 3n + 3}}", "**−3n + 23**"] },
+        { q: "−4, −2, 0, 2, …", a: "2n - 6", pre: "a(n) =", from: "-4 + (n - 1)*2", how: ["{{-4 + 2n - 2}}", "**2n − 6**"] }
+      ],
+      hints: ["Start with a(n) = a(1) + (n − 1)d, then distribute and combine.", "Check: does your rule give the first term when n = 1?"]
+    },
+    {
+      id: "t5", type: "mistake", title: "Off by one",
+      intro: "Tap the **first wrong line**, then give the correct answer.",
+      items: [
+        { q: "Find the 20th term of 5, 8, 11, 14, …", lines: ["{{a(1) = 5}}, {{d = 3}}", "{{a(20) = 5 + 20(3)}}", "{{= 65}}"], bad: 1, why: "You add d only **19** times to get from term 1 to term 20: {{5 + 19(3) = 62}}.", a: "62", from: "5 + 19*3" },
+        { q: "Find {{d}} for 9, 6, 3, 0, …", lines: ["{{d = 9 - 6}}", "{{d = 3}}"], bad: 0, why: "Subtract in order, next minus previous: {{6 - 9 = -3}}.", a: "-3", from: "6 - 9" }
+      ]
+    },
+    {
+      id: "t6", type: "solve", title: "Sequences in the real world",
+      items: [
+        { q: "A theater's first row has **18 seats**, and each row has **2 more** than the one in front. How many seats are in row **15**?", a: "46", post: "seats", from: "18 + 14*2", how: ["{{a(15) = 18 + 14(2)}}", "**46 seats**"] },
+        { q: "You save **$25** the first week and add **$5 more** each week than the week before (25, 30, 35, …). How much do you save in week **12**?", a: "80", pre: "$", from: "25 + 11*5", how: ["{{a(12) = 25 + 11(5)}}", "**$80**"] },
+        { q: "A candle is **24 cm** tall and burns **1.5 cm** every hour. After how many hours is it **6 cm** tall? (Height after {{h}} hours: {{24 - 1.5h}}.)", a: "12", post: "hours", eq: "24 - 1.5h = 6", how: ["{{24 - 1.5h = 6}}", "{{-1.5h = -18}}, **12 hours**"] },
+        { q: "Which term of 4, 9, 14, 19, … is **104**?", a: "21", post: "(the term number)", eq: "4 + (n - 1)*5 = 104", how: ["{{4 + (n - 1)5 = 104}}", "{{(n - 1)5 = 100}}, so {{n - 1 = 20}}, **n = 21**"] }
+      ],
+      hints: ["Find a(1) and d, then use the formula.", "To find which term, set the formula equal to the value and solve for n."]
+    }
+  ],
+  build: {
+    heading: "Find a pattern",
+    prompt: `Find (or invent) a real pattern that grows by the same amount each time: stacking chairs, saving money, a staircase, a stack of cups, a training plan. Write the **first 4 terms**, the **common difference**, a **rule for the nth term**, and use it to predict the **20th** term.`,
+    model: `One cup is 12 cm tall, and each cup stacked on top adds 1.5 cm. The heights are 12, 13.5, 15, 16.5. The common difference is 1.5. The rule is a(n) = 12 + (n - 1)(1.5), which simplifies to a(n) = 1.5n + 10.5. A stack of 20 cups would be a(20) = 1.5(20) + 10.5 = 40.5 cm tall.`,
+    placeholder: "My pattern: …",
+    reqs: [
+      { t: "List 4 terms, separated by commas", re: "[-−]?\\d+\\.?\\d*\\s*,\\s*[-−]?\\d+\\.?\\d*\\s*,\\s*[-−]?\\d+\\.?\\d*\\s*,\\s*[-−]?\\d+\\.?\\d*" },
+      { t: "Name the *common difference*", re: "\\b(common difference|difference|d\\s*=)" },
+      { t: "Write a rule with n, like a(n) = …", re: "\\(\\s*n\\s*\\)\\s*=|\\bn\\s*[-−+]|\\d\\s*n\\b" },
+      { t: "Predict the 20th term", re: "\\b(20th|a\\s*\\(\\s*20\\s*\\)|twenty)" }
+    ]
+  },
+  reflect: {
+    q: "Gauss solved the problem fast because he looked for a pattern instead of doing it the long way. When has looking at a problem in a new way (in math or anywhere) saved you time or effort?",
+    placeholder: "Once I found a shortcut when…"
+  },
+  challenge: [
+    {
+      id: "x1", type: "solve", title: "Gauss's trick",
+      intro: "Sum of an arithmetic sequence: (number of terms) × (first + last) ÷ 2.",
+      items: [
+        { q: "{{1 + 2 + 3 + … + 100}}", a: "5050", from: "100*101/2", how: ["{{100 * 101 / 2 = 5050}}"] },
+        { q: "{{1 + 2 + 3 + … + 50}}", a: "1275", from: "50*51/2", how: ["{{50 * 51 / 2 = 1275}}"] },
+        { q: "{{2 + 4 + 6 + … + 200}} (the first 100 even numbers)", a: "10100", from: "100*(2 + 200)/2", how: ["100 terms, first 2, last 200: {{100 * 202 / 2}}", "**10,100**"] },
+        { q: "Write a formula for {{1 + 2 + … + n}}.", a: "n(n + 1)/2", from: "n(n + 1)/2", how: ["n terms, first 1, last n: **n(n + 1)/2**"] }
+      ]
+    },
+    {
+      id: "x2", type: "solve", title: "Geometric sequences",
+      intro: "In a **geometric** sequence, you **multiply** by the same number (the common ratio) each time.",
+      items: [
+        { q: "3, 6, 12, 24, … What's the common ratio?", a: "2", from: "6/3", how: ["{{6/3 = 2}}"] },
+        { q: "What's the **10th** term of 3, 6, 12, 24, …? (Multiply by 2 nine times: {{3 * 2^9}}.)", a: "1536", from: "3*2^9", how: ["{{2^9 = 512}}", "{{3 * 512 = 1536}}"] },
+        { q: "What's the next term of 81, 27, 9, 3, …?", a: "1", from: "3/3", how: ["Multiply by 1/3: **1**"] },
+        { q: "A rumor spreads: 1 person tells 3, each of them tells 3 more, and so on (1, 3, 9, 27, …). How many people hear it in round **8**?", a: "2187", from: "3^7", how: ["{{a(8) = 1 * 3^7}}", "**2,187**"] }
+      ]
+    }
+  ],
+  figs: {
+    seq: { x: [0, 6], y: [0, 22], ystep: 2, w: 260, xlabel: "n", ylabel: "a(n)", points: [[1, 3], [2, 7], [3, 11], [4, 15], [5, 19]], lines: [{ fn: "4x - 1", dash: true, c: 1 }], alt: "Points (1, 3), (2, 7), (3, 11), (4, 15), (5, 19) on a dashed line" }
+  },
+  culture: "**Did you know?** Gauss was so proud of a discovery he made at 19 (how to construct a regular 17-sided polygon with a compass and straightedge) that he asked for a 17-gon on his tombstone. The stonemason refused, saying it would look like a circle.",
+  teacher: {
+    snags: [
+      ["Task 3", "Uses n instead of n − 1", "Task 5 targets this. Plug in n = 1 to check a rule."],
+      ["Task 4", "Leaves the rule as *3 + (n − 1)4*", "Marked yellow: equal but not simplified. Distribute and combine."],
+      ["Task 2", "Types d as a positive number for a decreasing sequence", "d is negative when the terms go down."]
+    ],
+    factcheck: "The 1-to-100 story comes from Wolfgang Sartorius von Waltershausen's 1856 memoir *Gauss zum Gedächtniss*; the teacher was J. G. Büttner, and Gauss was about 9 (c. 1786). Historians note the exact numbers may be embellished (Brian Hayes, \"Gauss's Day of Reckoning,\" *American Scientist*, 2006). Gauss's 17-gon construction dates from 1796; the tombstone anecdote is reported in several biographies (a 17-pointed star appears on his monument in Brunswick)."
+  }
+};

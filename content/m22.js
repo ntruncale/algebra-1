@@ -1,0 +1,160 @@
+module.exports = {
+  num: 22, unit: 5, slug: "m22-substitution", minutes: 40, calculator: "not needed",
+  title: "Systems of Equations: Substitution",
+  subtitle: "Solving a system exactly by replacing one variable with an expression",
+  lede: "Graphing is great for seeing a solution, but it's hard to read (2/3, −5/3) off a grid. Substitution finds the exact answer with algebra.",
+  recap: "A system's solution is the point that makes every equation true: where the graphs intersect. Parallel lines: no solution. Same line: infinitely many.",
+  goals: [
+    "Solve a system by substitution when a variable is already alone",
+    "Isolate a variable first, then substitute",
+    "Write and solve systems for word problems"
+  ],
+  context: {
+    title: "Pheasants and rabbits",
+    place: "China · about AD 400",
+    text: `A Chinese math book called the ***Sunzi Suanjing*** (*The Mathematical Classic of Master Sun*) was written around **1,600 years ago**. It contains a puzzle that Chinese students still learn today:
+
+> "Pheasants and rabbits are in the same cage. There are **35 heads** on top and **94 feet** below. How many pheasants and how many rabbits?"
+
+Each animal has one head. A pheasant has 2 feet and a rabbit has 4. With {{p}} pheasants and {{r}} rabbits:
+
+> {{p + r = 35}}    and    {{2p + 4r = 94}}
+
+Master Sun solved it with a clever trick: imagine every animal lifts half its feet. Then pheasants stand on 1 foot and rabbits on 2, for 47 feet in all. Each animal accounts for 1 of those feet, plus 1 more for each rabbit, so there must be 47 − 35 = **12 rabbits**, and **23 pheasants**.
+
+You'll solve it this week with a method that works for every system: **substitution**.`,
+    ask: "Check Master Sun's answer: do 23 pheasants and 12 rabbits really have 35 heads and 94 feet?"
+  },
+  learn: [
+    {
+      title: "Substitution when a variable is alone",
+      text: `If one equation already says {{y = …}} (or {{x = …}}), you can **replace** that variable in the other equation with the expression. Then you have **one equation with one variable**, which you know how to solve.`,
+      worked: [
+        { problem: "{{y = 2x}} and {{x + y = 9}}", steps: [["{{x + 2x = 9}}", "Replace y with 2x in the second equation."], ["{{3x = 9}}, so {{x = 3}}", "Solve for x."], ["{{y = 2(3) = 6}}", "Put x = 3 back into either equation to find y."], ["Solution: {{(3, 6)}}"]], check: "3 + 6 = 9 ✓ and 6 = 2(3) ✓", eq: "y = 2x; x + y = 9", answer: "(3, 6)" }
+      ],
+      tip: "Use parentheses when you substitute an expression: replacing y with {{x - 4}} in {{3x - 2y = 10}} gives {{3x - 2(x - 4) = 10}}."
+    },
+    {
+      title: "Isolate first",
+      text: `If no variable is alone, pick the **easiest** one to isolate: usually one with a coefficient of 1 or −1. Solve for it, then substitute.`,
+      worked: [
+        { problem: "{{x + 4y = 14}} and {{3x - 2y = 0}}", steps: [["{{x = 14 - 4y}}", "x has coefficient 1 in the first equation: isolate it."], ["{{3(14 - 4y) - 2y = 0}}", "Substitute into the second, with parentheses."], ["{{42 - 12y - 2y = 0}}, so {{42 = 14y}}, {{y = 3}}"], ["{{x = 14 - 4(3) = 2}}", "Back-substitute."], ["Solution: {{(2, 3)}}"]], eq: "x + 4y = 14; 3x - 2y = 0", answer: "(2, 3)" }
+      ],
+      check: { q: "In {{2x + y = 7}} and {{5x - 3y = 1}}, which is easiest to isolate?", choices: [["{{y}} in the first equation", true, "Its coefficient is 1: y = 7 − 2x."], ["{{x}} in the second equation", false, "You'd have to divide by 5 and get fractions."], ["{{y}} in the second equation", false]] }
+    },
+    {
+      title: "Special cases and word problems",
+      text: `If **both variables cancel** when you substitute:
+- a **false** statement (like {{3 = 7}}) means **no solution** (parallel lines);
+- a **true** statement (like {{4 = 4}}) means **infinitely many** solutions (the same line).
+
+For a **word problem**: define two variables, write **two equations** (one for each fact), and solve.`,
+      worked: [
+        { problem: "Pheasants and rabbits: {{p + r = 35}}, {{2p + 4r = 94}}", steps: [["{{p = 35 - r}}", "Isolate p."], ["{{2(35 - r) + 4r = 94}}", "Substitute."], ["{{70 - 2r + 4r = 94}}, so {{2r = 24}}, {{r = 12}}"], ["{{p = 35 - 12 = 23}}", "23 pheasants, 12 rabbits."]], eq: "p + r = 35; 2p + 4r = 94", answer: "(23, 12)" }
+      ]
+    }
+  ],
+  tasks: [
+    {
+      id: "t1", type: "steps", title: "Put the steps in order",
+      intro: "Solving {{y = x - 1}} and {{2x + y = 11}}:",
+      items: ["{{2x + (x - 1) = 11}}", "{{3x - 1 = 11}}", "{{x = 4}}", "{{y = 4 - 1 = 3}}", "Solution: {{(4, 3)}}"],
+      hints: ["Substitute first, then solve for x, then find y."]
+    },
+    {
+      id: "t2", type: "solve", title: "Substitute and solve", pick: 4,
+      intro: "Type the solution as an ordered pair, like **(3, 6)**.",
+      items: [
+        { q: "{{y = 3x}} and {{x + y = 16}}", a: "(4, 12)", eq: "y = 3x; x + y = 16", how: ["{{x + 3x = 16}}, {{x = 4}}", "{{y = 12}}"] },
+        { q: "{{y = x + 2}} and {{2x + y = 14}}", a: "(4, 6)", eq: "y = x + 2; 2x + y = 14", how: ["{{2x + (x + 2) = 14}}, {{3x = 12}}, {{x = 4}}", "{{y = 6}}"] },
+        { q: "{{x = 2y}} and {{x - 3y = -4}}", a: "(8, 4)", eq: "x = 2y; x - 3y = -4", how: ["{{2y - 3y = -4}}, {{-y = -4}}, {{y = 4}}", "{{x = 8}}"] },
+        { q: "{{y = -2x + 1}} and {{3x - y = 9}}", a: "(2, -3)", eq: "y = -2x + 1; 3x - y = 9", how: ["{{3x - (-2x + 1) = 9}}, {{5x - 1 = 9}}, {{x = 2}}", "{{y = -3}}"] },
+        { q: "{{y = 4x - 5}} and {{y = x + 1}}", a: "(2, 3)", eq: "y = 4x - 5; y = x + 1", how: ["{{4x - 5 = x + 1}}, {{3x = 6}}, {{x = 2}}", "{{y = 3}}"] },
+        { q: "{{x = y - 3}} and {{2x + 5y = 15}}", a: "(0, 3)", eq: "x = y - 3; 2x + 5y = 15", how: ["{{2(y - 3) + 5y = 15}}, {{7y = 21}}, {{y = 3}}", "{{x = 0}}"] }
+      ],
+      hints: ["Replace the variable that's alone with its expression, in parentheses.", "After you find one variable, plug it back in to find the other."]
+    },
+    {
+      id: "t3", type: "solve", title: "Isolate, then substitute", pick: 4,
+      items: [
+        { q: "{{x + y = 10}} and {{x - y = 4}}", a: "(7, 3)", eq: "x + y = 10; x - y = 4", how: ["{{x = 10 - y}}", "{{(10 - y) - y = 4}}, {{y = 3}}, {{x = 7}}"] },
+        { q: "{{2x + y = 7}} and {{5x - 3y = 1}}", a: "(2, 3)", eq: "2x + y = 7; 5x - 3y = 1", how: ["{{y = 7 - 2x}}", "{{5x - 3(7 - 2x) = 1}}, {{11x = 22}}, {{x = 2}}, {{y = 3}}"] },
+        { q: "{{x - 2y = 1}} and {{3x + y = 10}}", a: "(3, 1)", eq: "x - 2y = 1; 3x + y = 10", how: ["{{x = 1 + 2y}}", "{{3(1 + 2y) + y = 10}}, {{7y = 7}}, {{y = 1}}, {{x = 3}}"] },
+        { q: "{{4x + y = -2}} and {{x + 2y = 3}}", a: "(-1, 2)", eq: "4x + y = -2; x + 2y = 3", how: ["{{y = -2 - 4x}}", "{{x + 2(-2 - 4x) = 3}}, {{-7x = 7}}, {{x = -1}}, {{y = 2}}"] },
+        { q: "{{3x - y = 4}} and {{6x - 2y = 8}}", a: "infinitely many", how: ["{{y = 3x - 4}}", "{{6x - 2(3x - 4) = 8}} becomes {{8 = 8}}: always true, **infinitely many**"] },
+        { q: "{{y - 2x = 1}} and {{4x - 2y = 6}}", a: "no solution", how: ["{{y = 2x + 1}}", "{{4x - 2(2x + 1) = 6}} becomes {{-2 = 6}}: false, **no solution**"] }
+      ],
+      hints: ["Look for a variable with coefficient 1 or −1.", "If the variables disappear: true statement → infinitely many; false → no solution."]
+    },
+    {
+      id: "t4", type: "mistake", title: "Substitution slips",
+      intro: "Tap the **first wrong line**, then type the correct solution.",
+      items: [
+        { q: "{{y = x - 4}} and {{3x - 2y = 10}}", lines: ["{{3x - 2x - 4 = 10}}", "{{x = 14}}"], bad: 0, why: "The −2 must multiply the whole expression: {{3x - 2(x - 4) = 3x - 2x + 8 = 10}}, so {{x = 2}} and {{y = -2}}.", a: "(2, -2)", eq: "y = x - 4; 3x - 2y = 10" },
+        { q: "{{y = 2x}} and {{x + y = 12}}", lines: ["{{x + 2x = 12}}", "{{x = 4}}", "Solution: {{x = 4}}"], bad: 2, why: "You also need y: {{y = 2(4) = 8}}. The solution is the ordered pair {{(4, 8)}}.", a: "(4, 8)", eq: "y = 2x; x + y = 12" },
+        { q: "{{x + y = 5}} and {{2x + 3y = 12}}", lines: ["{{x = 5 - y}}", "{{2(5 - y) + 3y = 12}}", "{{10 - y = 12}}", "{{y = -2}}"], bad: 2, why: "{{-2y + 3y = y}}, so {{10 + y = 12}} and {{y = 2}}, {{x = 3}}.", a: "(3, 2)", eq: "x + y = 5; 2x + 3y = 12" }
+      ]
+    },
+    {
+      id: "t5", type: "solve", title: "Word problems",
+      intro: "Define two variables, write two equations, and solve. Type the answer asked for.",
+      items: [
+        { q: "Master Sun's cage: **35 heads**, **94 feet**. How many **rabbits**?", a: "12", post: "rabbits", how: ["{{p + r = 35}}, {{2p + 4r = 94}}", "{{p = 35 - r}}: {{70 + 2r = 94}}, **r = 12**"] },
+        { q: "A school play sold **200 tickets**: adults **$8**, students **$5**. It made **$1,240**. How many **adult** tickets?", a: "80", post: "adult tickets", how: ["{{a + s = 200}}, {{8a + 5s = 1240}}", "{{s = 200 - a}}: {{8a + 1000 - 5a = 1240}}, {{3a = 240}}, **a = 80**"] },
+        { q: "Two numbers add to **50**. One is **4 times** the other. What's the **larger** number?", a: "40", how: ["{{x + y = 50}}, {{y = 4x}}", "{{5x = 50}}, {{x = 10}}, {{y = 40}}"] },
+        { q: "A rectangle's perimeter is **46 cm**. Its length is **5 cm more** than its width. What's the **width**?", a: "9", post: "cm", how: ["{{2l + 2w = 46}}, {{l = w + 5}}", "{{2(w + 5) + 2w = 46}}, {{4w = 36}}, **w = 9**"] }
+      ],
+      hints: ["Each fact in the problem gives one equation.", "Look for a variable you can isolate easily."]
+    },
+    {
+      id: "t6", type: "order", title: "Build the system",
+      intro: "Build the equation for each fact. Use **a** for adult tickets and **s** for student tickets.",
+      items: [
+        { q: "200 tickets were sold in all.", a: "a + s = 200", alt: ["s + a = 200"], extra: ["8a"] },
+        { q: "Adult tickets cost $8 and student tickets $5. The total was $1,240.", a: "8a + 5s = 1240", alt: ["5s + 8a = 1240"], extra: ["13"] }
+      ]
+    }
+  ],
+  build: {
+    heading: "Write your own heads-and-feet puzzle",
+    prompt: `Make up a puzzle like Master Sun's, with two kinds of things: chickens and cows, bikes and cars, 2-point and 3-point baskets, $5 and $10 bills. Give the **total count** and a **second total** (legs, wheels, points, dollars). Write the **system**, **solve it by substitution**, and **check** your answer.`,
+    model: `A parking lot has 20 bikes and cars and 56 wheels. Let b be bikes and c be cars. Then b + c = 20 and 2b + 4c = 56. From the first equation, b = 20 - c. Substituting: 2(20 - c) + 4c = 56, so 40 + 2c = 56 and c = 8. Then b = 12. Check: 12 + 8 = 20 and 2(12) + 4(8) = 56.`,
+    placeholder: "A ___ has ___ … Let ___ be …",
+    reqs: [
+      { t: "Two equations with two variables", re: "\\d*\\s*[a-z]\\s*\\+\\s*\\d*\\s*[a-z]\\s*=", min: 2 },
+      { t: "Substitute (show an expression in parentheses)", re: "\\d\\s*\\(\\s*\\d+\\s*[-−+]" },
+      { t: "Find both values (two answers like c = 8)", re: "\\b[a-z]\\s*=\\s*[-−]?\\d+\\b", min: 2 },
+      { t: "Check your answer (use the word *check*)", re: "\\bcheck" }
+    ]
+  },
+  reflect: {
+    q: "Master Sun's \"lift half your feet\" trick and the substitution method both get the answer. Do you like having one reliable method or learning clever tricks? Why?",
+    placeholder: "I prefer… because…"
+  },
+  challenge: [
+    {
+      id: "x1", type: "solve", title: "Fractions and decimals",
+      items: [
+        { q: "{{y = 1/2 x + 1}} and {{3x - 4y = 2}}", a: "(6, 4)", eq: "y = x/2 + 1; 3x - 4y = 2", how: ["{{3x - 4(1/2 x + 1) = 2}}", "{{3x - 2x - 4 = 2}}, {{x = 6}}, {{y = 4}}"] },
+        { q: "{{0.5x + 0.2y = 4}} and {{x - y = 1}}", a: "(6, 5)", eq: "0.5x + 0.2y = 4; x - y = 1", how: ["{{x = y + 1}}", "{{0.5(y + 1) + 0.2y = 4}}, {{0.7y = 3.5}}, {{y = 5}}, {{x = 6}}"] },
+        { q: "{{x/3 + y/2 = 4}} and {{x - y = -3}}", a: "(3, 6)", eq: "x/3 + y/2 = 4; x - y = -3", how: ["{{x = y - 3}}", "{{(y - 3)/3 + y/2 = 4}}; multiply by 6: {{2y - 6 + 3y = 24}}, {{y = 6}}, {{x = 3}}"] }
+      ]
+    },
+    {
+      id: "x2", type: "solve", title: "Mixture puzzle",
+      items: [
+        { q: "A coffee shop mixes beans worth **$10/lb** with beans worth **$16/lb** to make **30 lb** worth **$12/lb**. How many pounds of the **$10** beans? ({{a + b = 30}}, {{10a + 16b = 12(30)}})", a: "20", post: "lb", how: ["{{b = 30 - a}}", "{{10a + 480 - 16a = 360}}, {{-6a = -120}}, **a = 20**"] },
+        { q: "You have **25 coins**, all dimes and quarters, worth **$4.00**. How many **quarters**?", a: "10", post: "quarters", how: ["{{d + q = 25}}, {{0.10d + 0.25q = 4.00}}", "{{0.10(25 - q) + 0.25q = 4}}, {{2.5 + 0.15q = 4}}, **q = 10**"] }
+      ]
+    }
+  ],
+  culture: "**Did you know?** The same pheasant-and-rabbit puzzle traveled to Japan, where it's called *tsurukame-zan*, \"crane and turtle arithmetic\" (cranes have 2 legs, turtles have 4). Japanese students still learn it in elementary school.",
+  teacher: {
+    snags: [
+      ["Task 2", "Gives only x", "The solution is an ordered pair; Task 4, item 2 targets this."],
+      ["Task 3", "Forgets parentheses when substituting", "Task 4, item 1 targets this."],
+      ["Task 5", "Answers with both numbers", "Each item asks for one value; read the question."]
+    ],
+    factcheck: "The *Sunzi Suanjing* is usually dated to the 3rd–5th centuries AD. Problem 31 of Book 3 is the pheasant-and-rabbit problem (35 heads, 94 feet; answer 23 pheasants and 12 rabbits), solved by halving the feet. The Japanese *tsurukame-zan* (crane-turtle calculation) dates from the Edo period."
+  }
+};

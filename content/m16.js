@@ -1,0 +1,177 @@
+module.exports = {
+  num: 16, unit: 4, slug: "m16-slope", minutes: 35, calculator: "not needed",
+  title: "Slope",
+  subtitle: "Rise over run, slope from two points, and slope as a rate of change",
+  lede: "Slope measures steepness: of a hill, a wheelchair ramp, a roof, a graph. It's one number that tells you how fast something is changing.",
+  recap: "An arithmetic sequence adds the same amount, d, each time. Its rule, like a(n) = 4n − 1, is a linear function: the points lie on a line.",
+  goals: [
+    "Find the slope of a line from a graph using rise over run",
+    "Find the slope between two points with the slope formula",
+    "Recognize positive, negative, zero and undefined slopes",
+    "Interpret slope as a rate of change, with units"
+  ],
+  context: {
+    title: "The steepest street in the world",
+    place: "Dunedin, New Zealand · 2019 to 2020",
+    text: `**Baldwin Street** in Dunedin, New Zealand, is a short residential street that climbs a hill so steep that tourists come just to walk up it. For years, *Guinness World Records* listed it as the **steepest street in the world**.
+
+Then in **2019**, a man named Gwyn Headley measured a street in his town, **Ffordd Pen Llech** in Harlech, Wales. Guinness agreed it was steeper, and Wales took the title. The people of Dunedin weren't happy.
+
+A New Zealand surveyor went back to Baldwin Street and measured it a new way, along the center of the road where people actually walk. In **April 2020**, Guinness gave the title back: Baldwin Street's steepest section rises about **1 meter for every 2.86 meters** across, a slope of about **35%**.
+
+How can you compare two hills fairly? With **slope**: how much it goes **up** (rise) for each step **across** (run). For comparison, U.S. law says a wheelchair ramp can rise **at most 1 inch for every 12 inches**, a slope of about 8%.`,
+    ask: "Which is steeper: a ramp that rises 1 foot over 12 feet, or one that rises 2 feet over 20 feet?"
+  },
+  learn: [
+    {
+      title: "Rise over run",
+      text: `The **slope** of a line is
+
+> {{slope = (rise)/(run)}} = (change in y)/(change in x)
+
+Pick two points on the line. Count how far you go **up** (+) or **down** (−) to get from one to the other: that's the **rise**. Count how far **right**: that's the **run**.
+
+In this graph, from (0, 1) to (2, 4) you rise 3 and run 2, so the slope is {{3/2}}.`,
+      fig: "rise",
+      check: { q: "A line goes **down 4** for every **2 to the right**. Its slope is…", choices: [["{{-2}}", true, "−4 ÷ 2 = −2."], ["{{2}}", false, "Going down means the rise is negative."], ["{{-1/2}}", false, "Rise goes on top: −4/2."]] }
+    },
+    {
+      title: "The slope formula",
+      text: `For any two points {{(x₁, y₁)}} and {{(x₂, y₂)}}, the slope {{m}} is
+
+> {{m = (y₂ - y₁)/(x₂ - x₁)}}
+
+**Subtract in the same order** on top and bottom: if y₂ comes first on top, x₂ comes first on the bottom.`,
+      worked: [
+        { problem: "Slope through {{(1, 2)}} and {{(4, 11)}}", steps: [["{{m = (11 - 2)/(4 - 1)}}", "Second point minus first point, top and bottom."], ["{{= 9/3 = 3}}"]] },
+        { problem: "Slope through {{(-2, 5)}} and {{(3, -5)}}", steps: [["{{m = (-5 - 5)/(3 - (-2))}}"], ["{{= -10/5 = -2}}", "Watch the double negative on the bottom: 3 − (−2) = 5."]] }
+      ]
+    },
+    {
+      title: "Four kinds of slope, and slope as a rate",
+      text: `Read a graph from **left to right**, like a sentence:`,
+      table: {
+        head: ["Slope", "The line…", "Example"],
+        rows: [["positive", "goes **up**", "{{m = 2}}"], ["negative", "goes **down**", "{{m = -1/3}}"], ["zero", "is **flat** (horizontal)", "{{m = 0}}"], ["undefined", "is **vertical**: the run is 0, and you can't divide by 0", "the line {{x = 4}}"]]
+      },
+      after: `In a real situation, slope is a **rate of change**, and it has units: **(y units) per (x units)**. If a graph shows distance in miles over time in hours, a slope of 60 means **60 miles per hour**. If it shows savings in dollars over weeks, a slope of 15 means **$15 per week**.`
+    }
+  ],
+  tasks: [
+    {
+      id: "t1", type: "quiz", title: "Slope from a graph",
+      questions: [
+        { q: "What's the slope of this line?", fig: "s1", choices: [["{{2}}", true, "From (0, −1) to (1, 1): rise 2, run 1."], ["{{1/2}}", false, "Rise over run: up 2, right 1."], ["{{-2}}", false, "The line goes up from left to right."]], keepOrder: true },
+        { q: "What's the slope of this line?", fig: "s2", choices: [["{{-1/3}}", true, "Down 1 for every 3 right."], ["{{-3}}", false, "Rise is −1, run is 3."], ["{{1/3}}", false, "It goes down, so the slope is negative."]], keepOrder: true },
+        { q: "What's the slope of this line?", fig: "s3", choices: [["{{0}}", true, "A flat line never rises."], ["undefined", false, "Vertical lines have undefined slope. This one is horizontal."], ["{{3}}", false, "3 is where it crosses the y-axis, not its slope."]], keepOrder: true },
+        { q: "What's the slope of this line?", fig: "s4", choices: [["{{3/4}}", true, "From (−4, −2) to (4, 4): rise 6, run 8, and 6/8 = 3/4."], ["{{4/3}}", false, "Rise goes on top."], ["{{6}}", false]], keepOrder: true }
+      ],
+      hints: ["Find two points where the line crosses grid corners exactly.", "Count the rise (up or down) first, then the run (right)."]
+    },
+    {
+      id: "t2", type: "solve", title: "Slope from two points", pick: 6,
+      intro: "Use {{m = (y₂ - y₁)/(x₂ - x₁)}}. Type **undefined** if the run is 0.",
+      items: [
+        { q: "{{(1, 3)}} and {{(3, 7)}}", a: "2", pre: "m =", from: "(7-3)/(3-1)", how: ["{{(7 - 3)/(3 - 1) = 4/2}}", "**2**"] },
+        { q: "{{(0, 5)}} and {{(4, -3)}}", a: "-2", pre: "m =", from: "(-3-5)/(4-0)", how: ["{{(-3 - 5)/(4 - 0) = -8/4}}", "**−2**"] },
+        { q: "{{(-2, 1)}} and {{(4, 4)}}", a: "1/2", pre: "m =", from: "(4-1)/(4-(-2))", how: ["{{(4 - 1)/(4 - (-2)) = 3/6}}", "**1/2**"] },
+        { q: "{{(-3, -2)}} and {{(-1, -8)}}", a: "-3", pre: "m =", from: "(-8-(-2))/(-1-(-3))", how: ["{{(-8 - (-2))/(-1 - (-3)) = -6/2}}", "**−3**"] },
+        { q: "{{(2, 6)}} and {{(7, 6)}}", a: "0", pre: "m =", from: "(6-6)/(7-2)", how: ["{{0/5 = 0}}: a horizontal line"] },
+        { q: "{{(5, 1)}} and {{(5, 9)}}", a: "undefined", pre: "m =", how: ["{{(9 - 1)/(5 - 5) = 8/0}}", "Can't divide by 0: **undefined** (a vertical line)"] },
+        { q: "{{(-4, 2)}} and {{(2, -2)}}", a: "-2/3", pre: "m =", from: "(-2-2)/(2-(-4))", how: ["{{(-2 - 2)/(2 - (-4)) = -4/6}}", "**−2/3**"] },
+        { q: "{{(0, 0)}} and {{(6, 9)}}", a: "3/2", pre: "m =", from: "9/6", how: ["{{9/6 = 3/2}}"] }
+      ],
+      hints: ["Subtract the y's on top and the x's on the bottom, in the same order.", "Subtracting a negative is adding: 4 − (−2) = 6."]
+    },
+    {
+      id: "t3", type: "sort", title: "What kind of slope?",
+      cats: ["Positive", "Negative", "Zero", "Undefined"],
+      items: [
+        ["A line that rises from left to right", 0], ["{{y = 5}}", 2, "Horizontal: y never changes."], ["{{x = -2}}", 3, "Vertical."], ["Through (1, 4) and (3, 0)", 1, "y goes down as x goes up."],
+        ["Through (−3, 2) and (5, 2)", 2, "Same y: flat."], ["A ski slope, skiing left to right downhill", 1], ["Savings that grow $10 a week", 0], ["Through (4, 1) and (4, 6)", 3, "Same x: vertical."]
+      ],
+      hints: ["Up from left to right → positive. Down → negative.", "Flat → zero. Straight up and down → undefined."]
+    },
+    {
+      id: "t4", type: "mistake", title: "Slope slip-ups",
+      intro: "Tap the **first wrong line**, then type the correct slope.",
+      items: [
+        { q: "Slope through {{(2, 1)}} and {{(6, 9)}}", lines: ["{{m = (6 - 2)/(9 - 1)}}", "{{= 4/8 = 1/2}}"], bad: 0, why: "The y's go on **top**: {{(9 - 1)/(6 - 2) = 8/4 = 2}}.", a: "2", from: "(9-1)/(6-2)" },
+        { q: "Slope through {{(1, 5)}} and {{(3, 1)}}", lines: ["{{m = (1 - 5)/(1 - 3)}}", "{{= -4/(-2) = 2}}"], bad: 0, why: "The order must match: if 1 − 5 on top (second minus first), then 3 − 1 on the bottom: {{-4/2 = -2}}.", a: "-2", from: "(1-5)/(3-1)" },
+        { q: "Slope through {{(-1, 4)}} and {{(3, 6)}}", lines: ["{{m = (6 - 4)/(3 - 1)}}", "{{= 2/2 = 1}}"], bad: 0, why: "{{3 - (-1) = 4}}, not 2: {{2/4 = 1/2}}.", a: "1/2", from: "2/4" }
+      ]
+    },
+    {
+      id: "t5", type: "solve", title: "Rate of change",
+      intro: "Find the slope, and think about what it means.",
+      items: [
+        { q: "A car is **40 miles** from home at 1 p.m. and **190 miles** from home at 4 p.m. What's its average speed (miles per hour)?", a: "50", post: "miles per hour", from: "(190-40)/(4-1)", how: ["{{(190 - 40)/(4 - 1) = 150/3}}", "**50 mph**"] },
+        { q: "A phone's battery is at **90%** at 2:00 and **54%** at 5:00. What's the rate of change (percent per hour)?", a: "-12", post: "% per hour", from: "(54-90)/(5-2)", how: ["{{(54 - 90)/(5 - 2) = -36/3}}", "**−12% per hour** (negative: it's draining)"] },
+        { q: "A plant was **6 cm** tall on day 4 and **15 cm** on day 10. How fast did it grow (cm per day)?", a: "1.5", post: "cm per day", from: "(15-6)/(10-4)", how: ["{{9/6 = 1.5}}"] },
+        { q: "A wheelchair ramp may rise **at most 1 inch per 12 inches**. A ramp rises **30 inches**. What's the **shortest** run it can have, in inches?", a: "360", post: "inches", eq: "30/r = 1/12", how: ["{{30/r = 1/12}}", "{{r = 360}} inches (30 feet!)"] }
+      ],
+      hints: ["Rate of change = change in y ÷ change in x.", "A negative rate means the quantity is decreasing."]
+    },
+    {
+      id: "t6", type: "select", title: "Steeper or not?",
+      items: [
+        "A slope of {{4}} is {steeper than|less steep than|the same as} a slope of {{2}}.",
+        "A slope of {{-5}} is {steeper than|less steep than} a slope of {{3}}. (Compare how far from 0.)",
+        "Baldwin Street (rise 1, run 2.86) is {steeper than|less steep than} a wheelchair ramp (rise 1, run 12).",
+        "A line with slope {{1/10}} is {almost flat|almost vertical}.",
+        "A line with slope {{100}} is {almost vertical|almost flat}."
+      ],
+      hints: ["Steepness depends on how far the slope is from 0, in either direction."]
+    }
+  ],
+  build: {
+    heading: "Measure a slope",
+    prompt: `Find a slope in real life: a ramp, a staircase, a driveway, a hill, a roof. **Estimate** or measure its rise and run (for stairs, one step's height is the rise and its depth is the run). Calculate the slope as a fraction **and** a decimal, and compare it to Baldwin Street (about 0.35) or a wheelchair ramp (about 0.08).`,
+    model: `I measured one stair at school. The rise is 7 inches and the run is 11 inches, so the slope is 7/11 ≈ 0.64. That's almost twice as steep as Baldwin Street (0.35), which makes sense because stairs are much steeper than any street. It's about 8 times steeper than a wheelchair ramp.`,
+    placeholder: "I measured …",
+    reqs: [
+      { t: "Give the rise and the run", re: "\\b(rise|run)\\b", min: 2 },
+      { t: "Write the slope as a fraction", re: "\\d+\\.?\\d*\\s*/\\s*\\d+" },
+      { t: "Write it as a decimal", re: "\\d*\\.\\d+" },
+      { t: "Compare (use *steeper*, *less steep* or *flatter*)", re: "\\b(steeper|less steep|flatter|not as steep)" }
+    ]
+  },
+  reflect: {
+    q: "Dunedin didn't give up when it lost the title. It re-measured more carefully and got it back. When have you had to look at something again more carefully (a test answer, a disagreement, a project) and found you'd been right, or wrong?",
+    placeholder: "Once I looked again and…"
+  },
+  challenge: [
+    {
+      id: "x1", type: "solve", title: "Slope puzzles",
+      items: [
+        { q: "A line through {{(2, 3)}} and {{(6, y)}} has slope {{5/2}}. What is {{y}}?", a: "13", pre: "y =", eq: "(y - 3)/(6 - 2) = 5/2", how: ["{{(y - 3)/4 = 5/2}}", "{{y - 3 = 10}}, **y = 13**"] },
+        { q: "A line through {{(x, 1)}} and {{(4, 7)}} has slope {{-3}}. What is {{x}}?", a: "6", pre: "x =", eq: "(7 - 1)/(4 - x) = -3", how: ["{{6/(4 - x) = -3}}", "{{6 = -12 + 3x}}, so {{3x = 18}}, **x = 6**"] },
+        { q: "Baldwin Street's steepest part rises 1 m for every 2.86 m of run. Express the slope as a percent, to the nearest whole percent.", a: "35", post: "%", how: ["{{1/2.86 ≈ 0.3497}}", "**35%**"] }
+      ]
+    },
+    {
+      id: "x2", type: "quiz", title: "Lines and points",
+      questions: [
+        { q: "Are {{(0, 1)}}, {{(2, 5)}} and {{(5, 11)}} on the same line?", choices: [["Yes: the slope between each pair is 2", true, "(5−1)/2 = 2 and (11−5)/3 = 2."], ["No", false, "Check the slope between each pair of points."]], keepOrder: true },
+        { q: "A line has slope 0 and passes through {{(3, -4)}}. What's its equation?", choices: [["{{y = -4}}", true, "Horizontal: every point has y = −4."], ["{{x = 3}}", false, "That's vertical (undefined slope)."], ["{{y = 3}}", false]] },
+        { q: "Two lines both pass through the origin. One has slope 3 and the other slope −3. They are…", choices: [["mirror images across the y-axis", true, "Flipping x to −x changes the sign of the slope."], ["the same line", false], ["parallel", false, "Parallel lines never meet, but these both pass through the origin."]] }
+      ]
+    }
+  ],
+  figs: {
+    rise: { x: [-1, 5], y: [-1, 6], w: 240, lines: [{ fn: "1.5x + 1" }], points: [[0, 1, "(0, 1)"], [2, 4, "(2, 4)"]], segs: [[0, 1, 2, 1, 2, true], [2, 1, 2, 4, 2, true]], texts: [[1, 0.5, "run 2"], [2.9, 2.5, "rise 3"]], alt: "A line through (0, 1) and (2, 4) with a run of 2 and a rise of 3 marked" },
+    s1: { x: [-4, 4], y: [-5, 5], w: 200, lines: [{ fn: "2x - 1" }], points: [[0, -1], [1, 1]], alt: "A line through (0, −1) and (1, 1)" },
+    s2: { x: [-6, 6], y: [-4, 4], w: 220, lines: [{ fn: "-x/3 + 1" }], points: [[0, 1], [3, 0]], alt: "A line through (0, 1) and (3, 0)" },
+    s3: { x: [-5, 5], y: [-2, 5], w: 200, lines: [{ fn: "3" }], alt: "A horizontal line at y = 3" },
+    s4: { x: [-5, 5], y: [-4, 5], w: 220, lines: [{ fn: "0.75x + 1" }], points: [[-4, -2], [4, 4]], alt: "A line through (−4, −2) and (4, 4)" }
+  },
+  culture: "**Did you know?** In the U.S., road signs give a hill's slope as a percent grade. A 6% grade sign warns truck drivers that the road drops 6 feet for every 100 feet. Baldwin Street, at about 35%, would get quite a sign.",
+  teacher: {
+    snags: [
+      ["Task 2", "Types *0* for a vertical line", "Vertical is *undefined* (the run is 0); horizontal is 0."],
+      ["Task 2", "Mixes the order of subtraction", "Task 4 targets this."],
+      ["Task 6", "Thinks −5 is less steep than 3", "Steepness is about distance from 0; the sign is direction."]
+    ],
+    factcheck: "Guinness named Ffordd Pen Llech (Harlech, Wales) steepest street in July 2019 (37.45% gradient); after a survey by New Zealand surveyor Toby Stoff measuring along the centerline, Guinness restored Baldwin Street's title in April 2020 at 34.8% (1 in 2.86). ADA Standards for Accessible Design §405.2: maximum running slope 1:12."
+  }
+};
